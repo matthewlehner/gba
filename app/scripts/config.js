@@ -6,8 +6,9 @@ require.config({
 
   paths: {
     jquery: '../components/jquery/jquery',
+    leaflet: '../components/leaflet/dist/leaflet-src',
     backbone: '../components/backbone/backbone',
-    lodash: '../components/lodash/lodash',
+    lodash: '../components/lodash/dist/lodash.underscore',
     'backbone.layoutmanager': '../components/layoutmanager/backbone.layoutmanager'
   },
 
@@ -25,11 +26,7 @@ require.config({
       exports: 'Backbone'
     },
     "backbone.layoutmanager": {
-      deps: [
-        'jquery',
-        'backbone',
-        'underscore'
-      ],
+      deps: [ 'backbone' ],
       exports: "Backbone.Layout"
     }
   }
