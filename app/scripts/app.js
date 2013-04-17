@@ -72,7 +72,7 @@ function(LayoutManager) {
       } else {
         // Create a new Layout with options.
         this.layout = new Backbone.Layout(_.extend({
-          el: "main"
+          el: "#main"
         }, options));
       }
 
