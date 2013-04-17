@@ -1,3 +1,27 @@
+@import 'leaflet/dist/leaflet';
+
 body {
-    background: #FAFAFA;
+  padding:0;
+  margin: 0;
+  background: #FAFAFA;
+}
+
+html, body, .tiles {
+  height: 100%;
+}
+
+#main {
+  height: 100%;
+  position: relative;
+
+  .controls {
+    position: absolute;
+    top:  0;
+    right:0;
+    z-index: 200;
+  }
+
+  .tiles {
+    z-index: 100;
+  }
 }
