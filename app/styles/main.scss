@@ -3,6 +3,8 @@
 
 @import 'variables';
 
+@import 'map';
+
 body {
   padding:0;
   margin: 0;
@@ -27,25 +29,4 @@ html, body, .tiles {
   .tiles {
     z-index: 100;
   }
-}
-
-%marker {
-  border-radius: 50%;
-  box-shadow: inset 0 1px 2px -1px rgba(255,255,255,0.7),
-              0 3px 4px -2px rgba(0,0,0,0.6);
-  border-width: 1px;
-  border-style: solid;
-  box-sizing: border-box;
-}
-
-.map-marker {
-  @extend %marker;
-  background: $building;
-  border-color: darken($building, 5%);
-}
-
-.map-current-location {
-  @extend %marker;
-  background: $currentLocation;
-  border-color: darken($currentLocation, 5%);
 }
