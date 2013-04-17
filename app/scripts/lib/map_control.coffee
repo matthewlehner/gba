@@ -1,12 +1,20 @@
 define [
   'leaflet'
 ], (Leaflet) ->
+
   class MapControl
     constructor: (@el) ->
       @createMap()
-      @findLocation
 
     createMap: ->
+      @map = new Map(@el)
+
+    addMarker: (lat, lng) ->
+      marker = new MapMarker(lat, lng)
+      marker.addTo(@map)
+
+  class Map
+    constructor: (@el) ->
       @map = L.map(@el,
         zoomControl: false
       ).locate
@@ -19,6 +27,8 @@ define [
       ).addTo @map
 
       @map.on('locationfound', @addCurrentLocationMarker)
+
+      return @map
 
     addCurrentLocationMarker: (e) =>
       radius = e.accuracy / 2
@@ -33,9 +43,6 @@ define [
         centerPoint
       ]).addTo(@map);
 
-    addMarker: (lat, lng) ->
-      marker = new MapMarker(lat, lng)
-      marker.addTo(@map)
 
   class MapMarker
     constructor: (@lat, @lng, @className = 'map-marker') ->
