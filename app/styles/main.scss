@@ -25,3 +25,9 @@ html, body, .tiles {
     z-index: 100;
   }
 }
+
+.map-marker {
+  background: #0D6130;
+  border-radius: 50%;
+  border: 1px solid darken(#0D6130, 5%);
+}
