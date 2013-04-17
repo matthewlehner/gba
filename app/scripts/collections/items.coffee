@@ -1,9 +1,11 @@
 define [ 
   'app'
-  'models/building'
-], (app, buildingModel) ->
+  'models/item'
+], (app, itemModel) ->
 
-  class buildingCollection extends Backbone.Collection
-    model: buildingModel
+  class itemCollection extends Backbone.Collection
+    model: itemModel
 
-  return buildingCollection
+    url: '//gbb.dev/buildings.json'
+
+  return itemCollection

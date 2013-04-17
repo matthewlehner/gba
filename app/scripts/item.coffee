@@ -1,6 +1,6 @@
 define [ 
   'app'
 ], (app) ->
-  class buildingModel extends Backbone.Model
+  class itemModel extends Backbone.Model
 
-  return buildingModel
+  return itemModel
