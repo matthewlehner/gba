@@ -6,7 +6,8 @@
     "jquery": "~1.9.1",
     "lodash": "~1.1.1",
     "backbone": "~1.0.0",
-    "layoutmanager": "~0.8.7"
+    "layoutmanager": "~0.8.7",
+    "leaflet": "~0.5.1"
   },
   "devDependencies": {}
 }
