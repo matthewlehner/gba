@@ -28,7 +28,10 @@ html, body, .tiles {
 }
 
 .map-marker {
-  background: #0D6130;
   border-radius: 50%;
+  box-shadow: inset 0 1px 2px -1px rgba(255,255,255,0.7),
+              0 3px 4px -2px rgba(0,0,0,0.6);
+
+  background: #0D6130;
   border: 1px solid darken(#0D6130, 5%);
 }
