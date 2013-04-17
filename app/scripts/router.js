@@ -14,17 +14,19 @@ function(app, buildingCollection, mapView) {
     },
 
     index: function() {
-      var sites = new buildingCollection();
+      var items = new buildingCollection();
+      app.items = items;
 
       app.useLayout('map_panel').setViews({
         '.controls': new mapView.controls({
-          collection: sites
+          items: items
         }),
         '.tiles'   : new mapView.tiles({
-          collection: sites
+          items: items
         })
       }).render();
 
+      items.fetch({dataType: 'jsonp', reset: true});
     }
   });
 
