@@ -71,6 +71,22 @@ define [
   class Item extends Backbone.Layout
     template: 'map/item'
 
+    events:
+      'click': 'openItem'
+      'click .arrow': 'closeItem'
+
+    openItem: =>
+      return if @open
+
+      @open = true
+      @model.trigger 'open', @model
+
+    closeItem: =>
+      return unless @open
+
+      @model.trigger 'close', @model
+      @open = false
+
     serialize: ->
       @model.toJSON()
 
