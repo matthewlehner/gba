@@ -13,6 +13,11 @@ function(app, Router, FastClick) {
   // FastClick to make phone touch devices more responsive.
   new FastClick(document.body);
 
+  //Hide the address bar.
+  setTimeout(function() {
+    window.scrollTo(0,1);
+  }, 0);
+
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
 
