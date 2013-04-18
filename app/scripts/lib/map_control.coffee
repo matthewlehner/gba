@@ -45,7 +45,7 @@ define [
 
 
   class MapMarker
-    constructor: (@lat, @lng, @className = 'map-marker') ->
+    constructor: (@lat, @lng, @className) ->
       return @createMarker()
 
     createMarker: ->
@@ -53,7 +53,12 @@ define [
         icon: @markerIcon()
 
     markerIcon: ->
-      new L.DivIcon
-        className: @className
+      options =
+        iconSize: L.point(34, 34)
+
+      if @className?
+        options['className'] = @className
+
+      new L.DivIcon options
 
   return MapControl
