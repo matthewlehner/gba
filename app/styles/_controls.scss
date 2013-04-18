@@ -14,17 +14,21 @@
 
   .search-container {
     @extend %button;
+    @extend %search;
   }
 
   .filters {
     @extend %button;
+    @extend %gears;
   }
 
   .geo-locate {
     @extend %button;
+    @extend %geo;
   }
 
   .info {
     @extend %button;
+    @extend %info;
   }
 }
