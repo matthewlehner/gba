@@ -23,3 +23,24 @@
   background: $currentLocation;
   border-color: darken($currentLocation, 5%);
 }
+
+.item-container {
+  position: absolute;
+  z-index: 201;
+  width: 100%;
+  height: 80px;
+  // bottom: -60px;
+  bottom: 0;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  transition: bottom 0.3s ease;
+  overflow: hidden;
+
+  &.hidden {
+    bottom: -80px;
+  }
+}
+
+.item {
+  padding: 18px;
+}
