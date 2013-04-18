@@ -43,25 +43,35 @@ define [
         'reset': @addItems
         'mapSelect': @selectItem
 
-      @listenTo @options.items,
-        'mapSelect': @selectItem
-
     selectItem: (item) ->
-      app.layout.$el.find('.item-container').toggleClass('hidden')
+      selectedView = @getView
+        model: item
 
-    addItems: =>
+      if @currentView is selectedView
+        @$el.parent().addClass('hidden')
+        @currentView = null
+      else
+        @currentView = selectedView
+        @currentView.$el.siblings()
+          .removeClass('current')
+        .end()
+        .addClass('current')
+
+        @$el.parent().removeClass('hidden')
+
+    addItems: (collection, render) =>
       @collection.each (item) =>
-        view = new Item
+        @insertView new Item
           className: "item id-#{item.id}"
           model: item
 
-        @insertView view
-      @render()
-
-    selectItem: (item) =>
-      console.log "selected #{item}"
+      unless render is false
+        @render()
 
   class Item extends Backbone.Layout
     template: 'map/item'
+
+    serialize: ->
+      @model.toJSON()
 
   return mapView
