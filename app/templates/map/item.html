@@ -1,1 +1,9 @@
-<p>There will be a picture in here</p>
+<div class='info'>
+  <% if ((_.isUndefined('image'))) { %>
+  <figure class='featured-image'>
+  </figure>
+  <% }; %>
+  <p><%- name %></p>
+  <p class='distance'>441 m</p>
+</div>
+<div class='controls'></div>
