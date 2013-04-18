@@ -35,7 +35,33 @@ define [
       item.trigger('mapSelect', item)
 
   class mapView.controls extends Backbone.Layout
-
     template: 'map/controls'
+
+  class mapView.items extends Backbone.Layout
+    initialize: ->
+      @listenTo @collection,
+        'reset': @addItems
+        'mapSelect': @selectItem
+
+      @listenTo @options.items,
+        'mapSelect': @selectItem
+
+    selectItem: (item) ->
+      app.layout.$el.find('.item-container').toggleClass('hidden')
+
+    addItems: =>
+      @collection.each (item) =>
+        view = new Item
+          className: "item id-#{item.id}"
+          model: item
+
+        @insertView view
+      @render()
+
+    selectItem: (item) =>
+      console.log "selected #{item}"
+
+  class Item extends Backbone.Layout
+    template: 'map/item'
 
   return mapView
