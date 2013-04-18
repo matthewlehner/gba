@@ -5,7 +5,7 @@ require([
   // Main Router.
   "router",
 
-  "fastclick"
+  "FastClick"
 ],
 
 function(app, Router, FastClick) {
