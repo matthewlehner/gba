@@ -31,6 +31,14 @@ function(app, itemCollection, mapView) {
         })
       }).render();
 
+      app.layout.listenTo(items, 'open', function () {
+          app.layout.$el.find('.item-container').css('height', $('body').height()+'px').addClass('open');
+      });
+
+      app.layout.listenTo(items, 'close', function() {
+        app.layout.$el.find('.item-container').css('height', '').removeClass('open');
+      });
+
       items.fetch({dataType: 'jsonp', reset: true});
 
     }
