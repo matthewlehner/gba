@@ -19,14 +19,20 @@ function(app, itemCollection, mapView) {
 
       app.useLayout('map_panel').setViews({
         '.controls': new mapView.controls({
+          el: false,
           items: items
         }),
         '.tiles'   : new mapView.tiles({
-          items: items
+          collection: items
+        }),
+        '.item-container' : new mapView.items({
+          el: false,
+          collection: items
         })
       }).render();
 
       items.fetch({dataType: 'jsonp', reset: true});
+
     }
   });
 
