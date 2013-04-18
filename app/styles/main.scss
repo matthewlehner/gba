@@ -1,37 +1,32 @@
 @import 'normalize-scss/normalize';
 @import 'bourbon/app/assets/stylesheets/bourbon';
 
+@import 'embedded_svgs';
 @import 'variables';
 
+@import 'controls';
 @import 'map';
+@import 'items';
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  padding:0;
-  margin: 0;
-  background: #FAFAFA;
-
-  font-weight: 300;
-  color: #444;
 }
 
 html, body, .tiles {
   height: 100%;
 }
 
+body {
+  padding:0;
+  margin: 0;
+  background: #FAFAFA;
+  font-weight: 300;
+  color: #444;
+}
+
 #main {
   height: 100%;
   position: relative;
-
-  .controls {
-    position: absolute;
-    top:  0;
-    right:0;
-    z-index: 200;
-  }
 
   .tiles {
     z-index: 100;

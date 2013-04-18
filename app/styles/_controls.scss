@@ -1,0 +1,30 @@
+.controls {
+  position: absolute;
+  top:  0;
+  left:0;
+  z-index: 200;
+
+  %button {
+    background: rgba(255,255,255,0.94);
+    border-radius: 3px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.45);
+    width: 78px;
+    height: 78px;
+  }
+
+  .search-container {
+    @extend %button;
+  }
+
+  .filters {
+    @extend %button;
+  }
+
+  .geo-locate {
+    @extend %button;
+  }
+
+  .info {
+    @extend %button;
+  }
+}
