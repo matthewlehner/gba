@@ -9,7 +9,8 @@ require.config({
     leaflet: '../components/leaflet/dist/leaflet-src',
     backbone: '../components/backbone/backbone',
     lodash: '../components/lodash/dist/lodash.underscore',
-    'backbone.layoutmanager': '../components/layoutmanager/backbone.layoutmanager'
+    'backbone.layoutmanager': '../components/layoutmanager/backbone.layoutmanager',
+    'FastClick': '../components/fastclick/lib/fastclick'
   },
 
   map: {
