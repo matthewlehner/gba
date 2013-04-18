@@ -11,8 +11,9 @@ define [
       @markerIcon = new L.DivIcon
         className: 'map-marker'
 
-      @listenTo @options.items,
+      @listenTo @collection,
         'reset': @addMarkers
+        'add': @addMarker
         'fetch': ->
           console.log 'getting locations'
 
@@ -21,7 +22,7 @@ define [
       @map = @mapControl.map
 
     addMarkers: ->
-      @options.items.each (item) =>
+      @collection.each (item) =>
         @addMarker(item)
 
     addMarker: (item) ->
@@ -31,7 +32,7 @@ define [
         @clickMarker(e, item)
 
     clickMarker: (e, item) =>
-      item.trigger('mapFocus')
+      item.trigger('mapSelect', item)
 
   class mapView.controls extends Backbone.Layout
 
