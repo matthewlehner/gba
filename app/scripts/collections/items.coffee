@@ -6,6 +6,6 @@ define [
   class itemCollection extends Backbone.Collection
     model: itemModel
 
-    url: '//gbb.dev/buildings.json'
+    url: '//gbb.dev/items.json'
 
   return itemCollection
