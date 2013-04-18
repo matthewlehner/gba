@@ -9,6 +9,8 @@
   , "layoutmanager": "~0.8.7"
   , "leaflet": "~0.5.1"
   , "normalize-scss": "*"
+  , "bourbon": "*"
+  , "fastclick": "*"
   },
   "devDependencies": {}
 }
