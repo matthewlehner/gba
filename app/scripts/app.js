@@ -1,8 +1,9 @@
 define([
-  "backbone.layoutmanager"
+  "backbone.layoutmanager",
+  "templates"
 ],
 
-function(LayoutManager) {
+function(LayoutManager, JST) {
 
   // Provide a global location to place configuration settings and module
   // creation.
@@ -12,7 +13,7 @@ function(LayoutManager) {
   };
 
   // Localize or create a new JavaScript Template object.
-  var JST = window.JST = window.JST || {};
+  // var JST = window.JST = window.JST || {};
 
   // Configure LayoutManager with Backbone Boilerplate defaults.
   LayoutManager.configure({
