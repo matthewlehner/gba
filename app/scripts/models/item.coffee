@@ -1,7 +1,7 @@
 define [ 
   'app'
-  'lib/human_distance'
-], (app, HumanDistance) ->
+  'lib/distance_helper'
+], (app, DistanceHelper) ->
   class ItemModel extends Backbone.Model
     initialize: ->
       @set 'distance', 'No Geolocation'
@@ -16,6 +16,6 @@ define [
 
     setDistance: =>
       distance = app.mapControl.getDistance @marker.getLatLng()
-      @set 'distance', new HumanDistance(distance)
+      @set 'distance', new DistanceHelper(distance).humanize()
 
   return ItemModel
