@@ -8,6 +8,8 @@ define [
 
     createMap: ->
       @map = new Map(@el)
+      @map.on 'locationfound', (e) =>
+        @currentLocation = e.latlng
 
     addMarker: (lat, lng) ->
       marker = new MapMarker(lat, lng)
@@ -42,7 +44,6 @@ define [
         circle
         centerPoint
       ]).addTo(@map);
-
 
   class MapMarker
     constructor: (@lat, @lng, @className) ->
