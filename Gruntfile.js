@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: 'public'
     };
 
     grunt.initConfig({
@@ -39,6 +39,7 @@ module.exports = function (grunt) {
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
+                    '<%= yeoman.app %>/templates/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -50,7 +51,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: '0.0.0.0'
             },
             livereload: {
                 options: {
@@ -167,8 +168,12 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
-                    baseUrl: 'app/scripts',
+                    // baseUrl: 'app/scripts',
+                    baseUrl: '.tmp/scripts',
                     optimize: 'none',
+                    paths: {
+                        'templates': '../../.tmp/scripts/templates'
+                    },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
                     //generateSourceMaps: true,
@@ -178,8 +183,25 @@ module.exports = function (grunt) {
                     useStrict: true,
                     wrap: true,
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
+                    almond: true,
                 }
             }
+        },
+        jst: {
+          compile: {
+            options: {
+              templateSettings: {
+                interpolate: /\{\{(.+?)\}\}/g
+              },
+              amd: true,
+              processName: function(filename) {
+                return filename.substring(4);
+              }
+            },
+            files: {
+              '.tmp/scripts/templates.js': ['<%= yeoman.app %>/templates/**/*.html']
+            }
+          }
         },
         rev: {
             dist: {
@@ -259,6 +281,17 @@ module.exports = function (grunt) {
         },
         // Put files not handled in other tasks here
         copy: {
+            js: {
+              files: [{
+                expand: true,
+                dot: true,
+                cwd: '<%= yeoman.app %>/scripts',
+                dest: '.tmp/scripts',
+                src: [
+                  '{,*/}*.js',
+                ]
+              }]
+            },
             dist: {
                 files: [{
                     expand: true,
@@ -276,6 +309,7 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
+                'jst',
                 'coffee:dist',
                 'compass:server'
             ],
@@ -290,6 +324,13 @@ module.exports = function (grunt) {
                 'svgmin',
                 'htmlmin'
             ]
+        },
+        symlink: {
+          js: {
+            dest: '.tmp/components',
+            relativeSrc: '../app/components',
+            options: {type: 'dir'},
+          }
         },
         bower: {
             all: {
@@ -326,11 +367,14 @@ module.exports = function (grunt) {
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
+        'copy:js',
+        'symlink',
+        'jst',
         'requirejs',
         'cssmin',
         'concat',
         'uglify',
-        'copy',
+        'copy:dist',
         'rev',
         'usemin'
     ]);
