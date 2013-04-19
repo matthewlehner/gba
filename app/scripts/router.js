@@ -5,7 +5,7 @@ define([
   'views/map'
 ],
 
-function(app, itemCollection, mapView) {
+function(app, ItemCollection, mapView) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -14,7 +14,7 @@ function(app, itemCollection, mapView) {
     },
 
     index: function() {
-      var items = new itemCollection();
+      var items = new ItemCollection();
       app.items = items;
 
       app.useLayout('map_panel').setViews({

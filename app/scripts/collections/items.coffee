@@ -1,11 +1,11 @@
 define [ 
   'app'
   'models/item'
-], (app, itemModel) ->
+], (app, ItemModel) ->
 
-  class itemCollection extends Backbone.Collection
-    model: itemModel
+  class ItemCollection extends Backbone.Collection
+    model: ItemModel
 
-    url: '//gbb.dev/items.json'
+    url: '/items'
 
-  return itemCollection
+  return ItemCollection
