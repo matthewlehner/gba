@@ -12,8 +12,12 @@
   box-sizing: border-box;
 }
 
-html, body, .tiles {
+html, body, #main, .tiles {
   height: 100%;
+}
+
+#main {
+  overflow: hidden;
 }
 
 body, input{
