@@ -1,21 +1,28 @@
 define [
+  'app',
   'leaflet'
-], (Leaflet) ->
+], (app, Leaflet) ->
 
   class MapControl
     constructor: (@el) ->
       @createMap()
 
     createMap: ->
-      @map = new Map(@el)
+      @mapFactory = new MapFactory(@el)
+      @map = @mapFactory.map
       @map.on 'locationfound', (e) =>
         @currentLocation = e.latlng
+        @mapFactory.addCurrentLocationMarker(e)
+        app.trigger 'locationfound'
 
     addMarker: (lat, lng) ->
       marker = new MapMarker(lat, lng)
       marker.addTo(@map)
 
-  class Map
+    getDistance: (latlng) ->
+      @currentLocation.distanceTo(latlng)
+
+  class MapFactory
     constructor: (@el) ->
       @map = L.map(@el,
         zoomControl: false
@@ -27,10 +34,6 @@ define [
         detectRetina: true
         maxZoom: 24
       ).addTo @map
-
-      @map.on('locationfound', @addCurrentLocationMarker)
-
-      return @map
 
     addCurrentLocationMarker: (e) =>
       radius = e.accuracy / 2
