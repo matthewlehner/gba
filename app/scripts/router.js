@@ -3,10 +3,12 @@ define([
   // Application.
   'app',
   'collections/items',
-  'views/map'
+  'views/map',
+  'views/controls',
+  'views/items'
 ],
 
-function(app, ItemCollection, mapView) {
+function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -19,14 +21,14 @@ function(app, ItemCollection, mapView) {
       app.items = items;
 
       app.useLayout('map_panel').setViews({
-        '.controls': new mapView.controls({
+        '.controls': new ControlsView({
           el: false,
           items: items
         }),
-        '.tiles'   : new mapView.tiles({
+        '.tiles'   : new MapTiles({
           collection: items
         }),
-        '.item-container' : new mapView.items({
+        '.item-container' : new ItemsView({
           el: false,
           collection: items
         })
