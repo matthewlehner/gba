@@ -3,7 +3,7 @@ define([
   // Application.
   'app',
   'collections/items',
-  'views/map',
+  'views/map_tiles',
   'views/controls',
   'views/items'
 ],
@@ -26,6 +26,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
           items: items
         }),
         '.tiles'   : new MapTiles({
+          el: false,
           collection: items
         }),
         '.item-container' : new ItemsView({
