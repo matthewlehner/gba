@@ -25,16 +25,25 @@ define [
       @collection.each (item) =>
         @addMarker(item)
 
+      @collection.trigger 'markersAdded'
+
+      return this
+
     addMarker: (item) ->
       lat = item.get 'lat'
       lng = item.get 'lng'
 
       if lat? and lng?
-        app.mapControl.addMarker(lat, lng).on 'click', (e) =>
+        marker = app.mapControl.addMarker(lat, lng).on 'click', (e) =>
           @clickMarker(e, item)
+
+        # let the model know that it has a marker.
+        item.trigger 'addMarker', marker
 
       else
         console.count("noLatLng")
+
+      return this
 
     clickMarker: (e, item) =>
       item.trigger('mapSelect', item)
