@@ -40,9 +40,6 @@ define [
         # let the model know that it has a marker.
         item.trigger 'addMarker', marker
 
-      else
-        console.count("noLatLng")
-
       return this
 
     clickMarker: (e, item) =>
