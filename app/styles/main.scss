@@ -16,12 +16,15 @@ html, body, .tiles {
   height: 100%;
 }
 
+body, input{
+  font-weight: 300;
+  color: #444;
+}
+
 body {
   padding:0;
   margin: 0;
   background: #FAFAFA;
-  font-weight: 300;
-  color: #444;
 }
 
 #main {
