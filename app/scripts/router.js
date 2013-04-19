@@ -1,3 +1,4 @@
+'use strict';
 define([
   // Application.
   'app',
@@ -10,7 +11,7 @@ function(app, ItemCollection, mapView) {
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+      '': 'index'
     },
 
     index: function() {
@@ -32,7 +33,7 @@ function(app, ItemCollection, mapView) {
       }).render();
 
       app.layout.listenTo(items, 'open', function () {
-          app.layout.$el.find('.item-container').css('height', $('body').height()+'px').addClass('open');
+        app.layout.$el.find('.item-container').css('height', $('body').height()+'px').addClass('open');
       });
 
       app.layout.listenTo(items, 'close', function() {

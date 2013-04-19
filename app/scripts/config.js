@@ -2,7 +2,7 @@
 'use strict';
 
 require.config({
-  deps: ["main"],
+  deps: ['main'],
 
   paths: {
     jquery: '../components/jquery/jquery',
@@ -15,20 +15,20 @@ require.config({
 
   map: {
     // Ensure Lo-Dash is used instead of underscore.
-    "*": { "underscore": "lodash" }
+    '*': { 'underscore': 'lodash' }
   },
 
   shim: {
     backbone: {
       deps: [
-          'underscore',
-          'jquery'
+        'underscore',
+        'jquery'
       ],
       exports: 'Backbone'
     },
-    "backbone.layoutmanager": {
+    'backbone.layoutmanager': {
       deps: [ 'backbone' ],
-      exports: "Backbone.Layout"
+      exports: 'Backbone.Layout'
     }
   }
 });

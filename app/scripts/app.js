@@ -1,6 +1,6 @@
 define([
-  "backbone.layoutmanager",
-  "templates"
+  'backbone.layoutmanager',
+  'templates'
 ],
 
 function(LayoutManager, JST) {
@@ -9,7 +9,7 @@ function(LayoutManager, JST) {
   // creation.
   var app = {
     // The root path to run the application.
-    root: "/"
+    root: '/'
   };
 
   // Localize or create a new JavaScript Template object.
@@ -20,11 +20,11 @@ function(LayoutManager, JST) {
     // Allow LayoutManager to augment Backbone.View.prototype.
     manage: true,
 
-    prefix: "templates/",
+    prefix: 'templates/',
 
     fetch: function(path) {
       // Concatenate the file extension.
-      path = path + ".html";
+      path = path + '.html';
 
       // If cached, use the compiled template.
       if (JST[path]) {
@@ -37,7 +37,7 @@ function(LayoutManager, JST) {
       // Seek out the template asynchronously.
       $.get(app.root + path, function(contents) {
         done(_.template(contents));
-      }, "text");
+      }, 'text');
     }
   });
 
@@ -70,7 +70,7 @@ function(LayoutManager, JST) {
       } else {
         // Create a new Layout with options.
         this.layout = new Backbone.Layout(_.extend({
-          el: "#main"
+          el: '#main'
         }, options));
       }
 
