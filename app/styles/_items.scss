@@ -62,7 +62,9 @@
     border-left: 1px solid rgba(0,0,0,0.2);
     width: 40px + 18;
     height: 80px - 18;
-    background: $arrow-svg center no-repeat;
+    @extend %arrow-svg;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 30px;
     opacity: 0.5;
     @include transition( transition-property-names((transform), webkit) 0.3s ease,
