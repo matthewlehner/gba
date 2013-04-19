@@ -58,7 +58,7 @@ define [
       @model.toJSON()
 
     changeDistance: () =>
-      distance = @model.get('distance')
-      @$el.find('.distance').html(distance)
+      @$el.find('.distance')
+      .html @model.get('distance')
 
   return ItemsView
