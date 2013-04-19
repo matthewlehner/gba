@@ -27,8 +27,10 @@ define [
     addMarker: (item) ->
       lat = item.get 'lat'
       lng = item.get 'lng'
-      app.mapControl.addMarker(lat, lng).on 'click', (e) =>
-        @clickMarker(e, item)
+
+      if lat? and lng?
+        app.mapControl.addMarker(lat, lng).on 'click', (e) =>
+          @clickMarker(e, item)
 
     clickMarker: (e, item) =>
       item.trigger('mapSelect', item)
