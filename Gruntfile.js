@@ -337,15 +337,13 @@ module.exports = function (grunt) {
         rjsConfig: '<%= yeoman.app %>/scripts/main.js'
       }
     },
-    shell: {
-      scp: {
-        command: 'scp -r . deployer@192.81.219.125:~/apps/gba',
-        options: {
-          stdout: true,
-          execOptions: {
-            cwd: '<%= yeoman.dist %>'
-          }
-        }
+    rsync: {
+      staging: {
+        src: '<%= yeoman.dist %>/',
+        dest: '~/apps/gba',
+        host: 'deployer@192.81.219.125',
+        recursive: true,
+        syncDest: true,
       }
     },
     compress: {
@@ -404,7 +402,7 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
     'build',
     'compress:deploy',
-    'shell:scp'
+    'rsync:staging'
   ]);
 
   grunt.registerTask('default', [
