@@ -2,10 +2,8 @@ define ->
 
   class HumanDistance
     constructor: (@value) ->
-      @distanceString()
-
       
-    distanceString: ->
+    humanize: ->
       if @value < 999
 
         # meters
