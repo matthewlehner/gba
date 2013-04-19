@@ -39,6 +39,9 @@ define [
       'click': 'openItem'
       'click .arrow': 'closeItem'
 
+    initialize: ->
+      @listenTo @model, 'mapSelect', @changeDistance
+
     openItem: =>
       return if @open
 
@@ -53,5 +56,9 @@ define [
 
     serialize: ->
       @model.toJSON()
+
+    changeDistance: () =>
+      distance = @model.get('distance')
+      @$el.find('.distance').html(distance)
 
   return ItemsView
