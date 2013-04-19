@@ -336,7 +336,18 @@ module.exports = function (grunt) {
       all: {
         rjsConfig: '<%= yeoman.app %>/scripts/main.js'
       }
-    }
+    },
+    shell: {
+      scp: {
+        command: 'scp -r . deployer@192.81.219.125:~/apps/gba',
+        options: {
+          stdout: true,
+          execOptions: {
+            cwd: '<%= yeoman.dist %>'
+          }
+        }
+      }
+    },
   });
 
   grunt.renameTask('regarde', 'watch');
@@ -377,6 +388,11 @@ module.exports = function (grunt) {
     'copy:dist',
     'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'shell:scp'
   ]);
 
   grunt.registerTask('default', [
