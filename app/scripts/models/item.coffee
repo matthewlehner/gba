@@ -10,7 +10,7 @@ define [
     hasMarker: (marker) =>
       @marker = marker
       if app.mapControl.currentLocation?
-        @setDistance
+        @setDistance()
       else
         app.on 'locationfound', @setDistance
 
