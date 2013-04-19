@@ -40,7 +40,7 @@ function(app, ItemCollection, mapView) {
         app.layout.$el.find('.item-container').css('height', '').removeClass('open');
       });
 
-      items.fetch({dataType: 'jsonp', reset: true});
+      items.fetch({reset: true});
 
     }
   });
