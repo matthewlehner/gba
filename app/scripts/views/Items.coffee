@@ -4,7 +4,7 @@ define [
   class ItemsView extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
-        'reset': @addItems
+        'markersAdded': @addItems
         'mapSelect': @selectItem
 
     selectItem: (item) ->
@@ -33,7 +33,7 @@ define [
         @render()
 
   class Item extends Backbone.Layout
-    template: 'map/item'
+    template: 'item'
 
     events:
       'click': 'openItem'
