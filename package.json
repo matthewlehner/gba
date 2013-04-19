@@ -28,6 +28,7 @@
     "grunt-concurrent": "~0.1.0",
     "grunt-symlink": "*",
     "grunt-shell": "*",
+    "grunt-contrib-compress": "~0.4.10",
     "matchdep": "~0.1.1"
   },
   "engines": {

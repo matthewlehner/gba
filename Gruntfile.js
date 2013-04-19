@@ -348,6 +348,17 @@ module.exports = function (grunt) {
         }
       }
     },
+    compress: {
+      deploy: {
+        options: {
+          mode: 'gzip'
+        },
+        expand: true,
+        cwd: '<%= yeoman.dist %>/',
+        src: ['scripts/*', 'styles/*'],
+        dest: '<%= yeoman.dist %>/'
+      }
+    },
   });
 
   grunt.renameTask('regarde', 'watch');
@@ -392,6 +403,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('deploy', [
     'build',
+    'compress:deploy',
     'shell:scp'
   ]);
 
