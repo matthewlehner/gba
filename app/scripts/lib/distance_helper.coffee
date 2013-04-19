@@ -1,6 +1,6 @@
 define ->
 
-  class HumanDistance
+  class DistanceHelper
     constructor: (@value) ->
       
     humanize: ->
@@ -14,4 +14,4 @@ define ->
         #kilometers
         "#{parseInt(@value / 1000)} km"
 
-  return HumanDistance
+  return DistanceHelper
