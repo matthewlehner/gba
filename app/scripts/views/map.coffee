@@ -18,8 +18,7 @@ define [
           console.log 'getting locations'
 
     afterRender: ->
-      @mapControl = new MapControl(@el)
-      @map = @mapControl.map
+      app.mapControl = new MapControl(@el)
 
     addMarkers: ->
       @collection.each (item) =>
@@ -28,7 +27,7 @@ define [
     addMarker: (item) ->
       lat = item.get 'lat'
       lng = item.get 'lng'
-      @mapControl.addMarker(lat, lng).on 'click', (e) =>
+      app.mapControl.addMarker(lat, lng).on 'click', (e) =>
         @clickMarker(e, item)
 
     clickMarker: (e, item) =>
