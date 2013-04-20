@@ -8,16 +8,22 @@ define [
         'mapSelect': @selectItem
 
     selectItem: (item) ->
-      selectedView = @getView
+      selectedItem = @getView
         model: item
 
-      if @currentView is selectedView
-        @$el.parent().addClass('hidden')
-        @currentView = null
+      if @currentView is selectedItem
+        @hideItems();
       else
-        @currentView = selectedView
-        @currentView.$el.siblings()
-          .removeClass('current')
+        @currentView = selectedItem
+        @showItems();
+
+    hideItems: ->
+      @$el.parent().addClass('hidden')
+      @currentView = null
+
+    showItems: ->
+      @currentView.$el.siblings()
+        .removeClass('current')
         .end()
         .addClass('current')
 
