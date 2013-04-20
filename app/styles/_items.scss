@@ -83,3 +83,9 @@
     color: #999;
   }
 }
+
+.item-details {
+  height: 300px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
