@@ -2,6 +2,7 @@ define [
   'app'
   'lib/distance_helper'
 ], (app, DistanceHelper) ->
+
   class ItemModel extends Backbone.Model
     initialize: ->
       @set 'distance', 'No Geolocation'
