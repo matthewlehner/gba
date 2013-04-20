@@ -1,6 +1,7 @@
 define [
   'app'
 ], (app) ->
+
   class ItemsView extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
@@ -52,10 +53,13 @@ define [
       return if @open
 
       @open = true
+      @insertView('.item-details', new ItemDetails()).render()
       @model.trigger 'open', @model
 
     closeItem: =>
       return unless @open
+
+      @removeView '.item-details'
 
       @model.trigger 'close', @model
       @open = false
@@ -66,5 +70,8 @@ define [
     changeDistance: () =>
       @$el.find('.distance')
       .html @model.get('distance')
+
+  class ItemDetails extends Backbone.Layout
+    template: 'item_details'
 
   return ItemsView
