@@ -37,13 +37,14 @@ module.exports = function (grunt) {
         tasks: ['compass:server']
       },
       jst: {
-        files: ['<%= yeoman.app %>/templates/{,*/}*.html'],
+        files: [
+          '<%= yeoman.app %>/templates/*.html',
+        ],
         tasks: ['jst']
       },
       livereload: {
         files: [
           '<%= yeoman.app %>/*.html',
-          '<%= yeoman.app %>/templates/*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -194,9 +195,9 @@ module.exports = function (grunt) {
     jst: {
       compile: {
         options: {
-          templateSettings: {
-            interpolate: /\{\{(.+?)\}\}/g
-          },
+          // templateSettings: {
+          //   interpolate: /\{\{(.+?)\}\}/g
+          // },
           amd: true,
           processName: function(filename) {
             return filename.substring(4);
