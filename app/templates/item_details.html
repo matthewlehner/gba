@@ -2,15 +2,20 @@
 
 <section class='actions'></section>
 
+<% if (typeof summary !== "undefined" && summary !== null) { %>
 <section class='summary'>
   <h3>Summary</h3>
-  École Victor-Brodeur is a K-12 French Immersion school in Victoria, BC built for School District No. 93, le Conseil scolaire francophone de la Colombie-Britannique (CSF).
+  <%= summary %>
 </section>
+<% }; %>
 
+<% if (typeof certifications !== "undefined" && certifications !== null) { %>
 <section class='awards'>
   <h3>Awards and Certifications</h3>
-  LEED Gold (Pending)
+
+  <%= certifications %>
 </section>
+<% }; %>
 
 <section class='team'>
   <h3>Project Team Members</h3>
@@ -24,26 +29,9 @@
   </dl>
 </section>
 
+<% if (typeof description !== "undefined" && description !== null) { %>
 <section class='description'>
   <h3>Description</h3>
-
-  <h4>Sustainable Sites</h4>
-  <p>The project is located on a previous developed site along the English Bay beachfront. Formerly, the site was an old cement Beach Concession stand operated by the City of Vancouver Parks and Recreation. A carefully considered plan was implemented during construction to minimize erosion and sedimentation of the site. The roof is a combination of an accessible plaza at street level and a green roof on the level above. Heat Island effects have been reduced through the use of the green roof, which includes an organic herb garden on the second level. Strict design criteria required minimal intrusion and a transparent building envelope to maintain site lines to the beach and to integrate fully with adjacent existing mature trees and landscape features.</p>
-  <p>The location is well situated next to the busy major bike route that connects North False Creek to Stanley Park, with access to many amenities and public transportation options. Features such as secure bike storage, showers and changing facilities for staff, in addition to outdoor visitor bike storage. Preferred carpool parking has lead Cactus Club to implement a carpool management strategy to encourage carpooling among staff.</p>
-  <h4>Water Efficiency</h4>
-  <p>A rainwater harvesting system provides the necessary water to the irrigation system where no potable water is being used. The rainwater is collected through roof drains, and stored in the harvesting tank for irrigation use. To reduce plumbing fixture water use, dual-flush water closets and waterless urinals have been used.</p>
-  <h4>Energy and Atmosphere</h4>
-  <p>The design is intended to take advantage of the natural benefits of the site in terms of solar heat gain, shading and natural ventilation. This is achieved through roof overhangs and canopies on the west and south facing elevations, together with large, operable sliding windows oriented toward the ocean. The large amount of predominantly west facing glazing affords a high degree of day lighting and reduced reliance on the integrated low-energy light systems. Based on the owner&rsquo;s requirements, the control design maximizes energy savings while ensuring the proper atmosphere of functionality is achieved for each specific area and the type of light source used in the project.</p>
-  <p>The lower floor of the building is built into the side of the sloped site, diminishing the servicing load through the use of earth sheltering. Together, the walls and roof form a very high performance envelope with thermal and acoustic advantages. The upper level enclosed terrace is provided with radiant in-floor heating, and the window wall fully opens to provide natural ventilation and cooling. The lower level dining areas, along the windows, installed in-floor heating counteracts the cold wall effect created by colder conditions in the winter. Energy, gas, water and power meters have been provided for all the systems. The meters will be reported to a PulseTM Energy Monitoring System to help monitor and report building energy consumption data.</p>
-  <h4>Materials and Resources</h4>
-  <p>A dedicated recycling area and frequent pick-up ensure that recycling materials from ongoing operations are diverted from the landfill. Additionally, Cactus Club Caf&eacute; composts kitchen waste in the Goh Bio GB 400 composter in conjunction with the Green Table Program.</p>
-  <p>Cactus Club is a founding member of the Green Table Network; an organization dedicated to implementing green solutions for the food service industry including smarter, more energy efficient equipment, lighting, innovations in compostable servingware and recycling systems, Farm-to-table and ocean-friendly supply networks, and improved methods to measure all this positive change. Cactus Club&rsquo;s menu is Ocean Wise approved. As noted previously, there is an herbal garden on the green roof of the building.</p>
-  <p>Impeccable waste management by the contractor during construction resulted in an impressive 99% of total demolition and construction waste being diverted from the landfill. Full use is made of high quality, durable building components. Construction materials were sourced regionally as much as possible. Over 40% of construction materials are sourced regionally according to LEED Requirements qualifying it for an Innovation in Design point. Additionally, material containing recycled content was chosen whenever possible. The total recycled content in construction materials is over 15%. Forest Stewarship Council (FSC) certified wood is used extensively in many areas of the building including the glulam structure, wall panelling, millwork and ceilings. The dining areas are finished with robust, reclaimed end grain white oak wood flooring. Over 80% of wood use on this project is FSC certified.</p>
-  <h4>Indoor Environmental Quality</h4>
-  <p>Indoor environmental air quality has been carefully considered through the use of low-emitting adhesives, sealants, paints and coatings, and urea-formaldehyde free composite wood products in the interior spaces of the building. The building ventilation meets ASHRAE 62.1-2004 performance standard, and a permanent Carbon Dioxide monitoring system has been incorporated into the design to provide feedback on space ventilation performance. A construction indoor Air Quality Management Plan was successfully implementred and combined with a building flush-out period to ensure clean indoor air quality for both construction workers during construction, and restaurant staff and patrons post occupancy. Smoking is prohibited at least 7.5m from exterior doors, windows and air intakes.</p>
-  <p>Entry way walk-off mats have been incorporated into the building design to capture outdoor pollutants and prevent them from entering the building. The lighting control system is fully customizable, satisfying the LEED Requirements for Controllability of Systems in interior spaces. Occupant thermal comfort has been carefully considered, and the building has been designed to meet ASHRAE 55-2004 standards. Additionally, a permanent humidity monitoring system has been incorporated into the building design.</p>
-  <p>The use of glazing is maximized based on the City of Vancouver&rsquo;s requirements for a highly transparent building envelope, thus daylighting and views in the space are easily achieved. The partition separating the lower level kitchen and server areas from the dining area has been left open to preserve daylight penetration and views for staff work in these tucked away areas.</p>
-  <p>A high level of noise control is achieved through the use of high performance building envelope and interior finishes designed to minimise acoustic issues. For example, extensive use is made of acoustic ceilings utilising a combination of perforated or slotted wood, insulation and fabric to provide a calm, high quality environment for patrons. The earth sheltering of the building also assists in minimising acoustic impact from the street.</p>
-  <h4>Innovation in Design</h4>
-  <p>Cactus Club has created an innovative Green Cleaning Plan for operations at the English Bay restaurant. All cleaning products must meet the LEED Requirements for third-party verification of the environmental friendliness of the product. Cactus Club has undertaken initiatives to educate the public about the Green Building Features of the restaurant. The first component of their educational strategy is a Green Building Audio Tour in partnership with the City of Vancouver and the Open Green Building Society. The audio tour allows for broad deployment of the educational green building content by being accessible 24 hours a day, 7 days a week, both locally and abroad through the phone and internet. The impressive performance of construction waste management, and regionally source materials have earned the project two Innovation in Design credits.</p>
+  <%= description %>
 </section>
+<% }; %>
