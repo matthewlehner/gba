@@ -33,7 +33,8 @@ define [
     addItems: (collection, render) =>
       @collection.each (item) =>
         @insertView new Item
-          className: "item id-#{item.id}"
+          id: "item-#{item.id}"
+          className: "item"
           model: item
 
       unless render is false
@@ -43,26 +44,32 @@ define [
     template: 'item'
 
     events:
-      'click': 'openItem'
+      'click header': 'openItem'
       'click .arrow': 'closeItem'
 
     initialize: ->
       @listenTo @model, 'mapSelect', @changeDistance
 
-    openItem: =>
-      return if @open
+    openItem: (event) =>
+      return if @openView?
 
-      @open = true
-      @insertView('.item-details', new ItemDetails()).render()
+      @openView = @insertView(new ItemDetails
+        model: @model
+        tagName: 'article'
+      ).render().view
       @model.trigger 'open', @model
+      @openView.$el.height( $('#main').height() - @$el.find('header').height() - 100)
 
-    closeItem: =>
-      return unless @open
+      event.stopImmediatePropagation()
 
-      @removeView '.item-details'
+    closeItem: (event) =>
+      return unless @openView?
 
       @model.trigger 'close', @model
-      @open = false
+      @removeView @openView
+      delete @openView
+
+      event.stopImmediatePropagation()
 
     serialize: ->
       @model.toJSON()
@@ -72,6 +79,10 @@ define [
       .html @model.get('distance')
 
   class ItemDetails extends Backbone.Layout
+    className: 'item-details'
     template: 'item_details'
+
+    serialize: ->
+      @model.toJSON()
 
   return ItemsView
