@@ -52,6 +52,13 @@
 
   .info {
     margin-right: 60px;
+
+    p {
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   .arrow {
@@ -71,13 +78,6 @@
                          border 0 ease 0.3s);
   }
 
-  p {
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   .distance {
     margin-top: 8px;
     color: #999;
@@ -85,7 +85,8 @@
 }
 
 .item-details {
-  height: 300px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding: 5px;
+  background: rgba(255, 0, 0, 0.1);
 }
