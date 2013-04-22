@@ -37,6 +37,7 @@
 
 .item {
   display: none;
+  // height: 100%;
 
   header {
     @include clearfix;
@@ -88,5 +89,4 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding: 5px;
-  background: rgba(255, 0, 0, 0.1);
 }
