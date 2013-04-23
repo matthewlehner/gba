@@ -58,7 +58,9 @@ define [
         tagName: 'article'
       ).render().view
       @model.trigger 'open', @model
-      @openView.$el.height( $('#main').height() - @$el.find('header').height() - 100)
+      @openView.$el.height(
+        $('#main').height() - @$el.find('header').innerHeight()
+      )
 
       event.stopImmediatePropagation()
 
