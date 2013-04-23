@@ -85,12 +85,12 @@
   .geo-locate {
     @extend %button;
     @extend %geo-svg;
-    top: 100px;
+    top: 55px;
   }
 
   .info {
     @extend %button;
     @extend %info-svg;
-    top: 150px;
+    top: 105px;
   }
 }
