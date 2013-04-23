@@ -1,37 +1,41 @@
-<section class='audio'></section>
+<!-- <section class='audio'></section> -->
 
-<section class='actions'></section>
+<!-- <section class='actions'></section> -->
 
 <% if (typeof summary !== "undefined" && summary !== null) { %>
 <section class='summary'>
-  <h3>Summary</h3>
-  <%= summary %>
+  <h2>Summary</h2>
+
+  <article>
+    <%= summary %>
+  </article>
 </section>
 <% }; %>
 
 <% if (typeof certifications !== "undefined" && certifications !== null) { %>
 <section class='awards'>
-  <h3>Awards and Certifications</h3>
+  <h2>Awards and Certifications</h2>
 
-  <%= certifications %>
+  <dl>
+    <%= certifications %>
+  </dl>
 </section>
 <% }; %>
 
+<% if (typeof team !== "undefined" && team !== null ) { %>
 <section class='team'>
-  <h3>Project Team Members</h3>
-  <dl>
-    <dt>Architect</dt>
-    <dd>Acton Ostry Architects</dd>
-    <dt>Developer</dt>
-    <dd>Allan Kube Associates</dd>
-    <dt>Sustainability Consulting</dt>
-    <dd>Recollective Consulting, Inc.</dd>
-  </dl>
+  <h2>Project Team Members</h2>
+
+  <dl><%= team %></dl>
 </section>
+<% }; %>
 
 <% if (typeof description !== "undefined" && description !== null) { %>
 <section class='description'>
-  <h3>Description</h3>
-  <%= description %>
+  <h2>Description</h2>
+
+  <article>
+    <%= description %>
+  </article>
 </section>
 <% }; %>
