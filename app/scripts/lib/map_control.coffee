@@ -26,9 +26,12 @@ define [
     constructor: (@el) ->
       @map = L.map(@el,
         zoomControl: false
-      ).locate
-        setView: true
         maxZoom: 16
+        minZoom: 2
+      ).setView([46, -95], 2)
+      .locate
+        setView: true
+        maxZoom: 14
 
       L.tileLayer('http://{s}.tiles.mapbox.com/v3/mpl.map-glvcefkt/{z}/{x}/{y}.png'
         detectRetina: true
