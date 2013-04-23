@@ -23,7 +23,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
       app.useLayout('map_panel').setViews({
         '.controls': new ControlsView({
           el: false,
-          items: items
+          collection: items
         }),
         '.tiles'   : new MapTiles({
           el: false,
