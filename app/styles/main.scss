@@ -33,11 +33,32 @@ body {
   overflow: hidden;
 
   &.map {
+    .item {
+      display: none;
+
+      &.current {
+        display:block;
+      }
+    }
   }
 
   &.list {
     .tiles {
       right: 100%;
+    }
+
+    .item-container {
+      height: 100%;
+      top: 0;
+      z-index: 100;
+
+      margin-top: 50px;
+
+      padding: 5px;
+    }
+
+    .geo-locate, .info {
+      left: -100%;
     }
   }
 

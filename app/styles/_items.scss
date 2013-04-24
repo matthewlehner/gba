@@ -38,8 +38,6 @@
 }
 
 .item {
-  display: none;
-
   header {
     @include clearfix;
     padding: 18px;
@@ -48,9 +46,6 @@
     position: relative;
   }
 
-  &.current {
-    display:block;
-  }
 
   .info {
     margin-right: 60px;
