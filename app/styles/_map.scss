@@ -1,9 +1,13 @@
 @import 'leaflet/dist/leaflet';
 
+.tiles {
+  z-index: 100;
+  @include transition( right 0.3s ease );
+}
+
 .leaflet-control-attribution {
   display: none;
 }
-
 
 /* Markers */
 %marker {

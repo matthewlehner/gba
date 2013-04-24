@@ -36,15 +36,18 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
       }).render();
 
       app.layout.listenTo(items, 'open', function () {
+
         app.layout.$el.find('.item-container').
           height($('#main').height()).
-          addClass('open');
+        end().
+        addClass('open-item');
       });
 
       app.layout.listenTo(items, 'close', function() {
         app.layout.$el.find('.item-container').
           css('height', '').
-          removeClass('open');
+        end().
+        removeClass('open-item');
       });
 
       items.fetch({reset: true});

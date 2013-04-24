@@ -16,10 +16,6 @@ html, body, #main, .tiles {
   height: 100%;
 }
 
-#main {
-  overflow: hidden;
-}
-
 body, input{
   font-weight: 300;
   color: #444;
@@ -34,8 +30,21 @@ body {
 #main {
   height: 100%;
   position: relative;
+  overflow: hidden;
 
-  .tiles {
-    z-index: 100;
+  &.map {
+
+  }
+
+  &.open-item {
+    .controls {
+      top: -100%;
+    }
+  }
+
+  &.list {
+    .tiles {
+      right: 100%;
+    }
   }
 }
