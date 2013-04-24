@@ -5,8 +5,19 @@ define [
   class ItemsView extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
-        'markersAdded': @addItems
-        'mapSelect': @selectItem
+        'markersAdded'     : @addItems
+        'mapSelect'        : @selectItem
+        'searchSuccessful' : @showSearchResults
+
+    addItems: (collection, render) =>
+      @collection.each (item) =>
+        @insertView new Item
+          id: "item-#{item.id}"
+          className: "item"
+          model: item
+
+      unless render is false
+        @render()
 
     selectItem: (item) ->
       selectedItem = @getView
@@ -30,15 +41,8 @@ define [
 
         @$el.parent().removeClass('hidden')
 
-    addItems: (collection, render) =>
-      @collection.each (item) =>
-        @insertView new Item
-          id: "item-#{item.id}"
-          className: "item"
-          model: item
-
-      unless render is false
-        @render()
+    showSearchResults: =>
+      console.log 'should show search results now.'
 
   class Item extends Backbone.Layout
     template: 'item'
