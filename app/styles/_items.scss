@@ -14,7 +14,6 @@
   &.hidden {
     bottom: -85px;
   }
-
 }
 
 #main.open-item {
@@ -40,7 +39,6 @@
 
 .item {
   display: none;
-  // height: 100%;
 
   header {
     @include clearfix;

@@ -33,18 +33,17 @@ body {
   overflow: hidden;
 
   &.map {
-
-  }
-
-  &.open-item {
-    .controls {
-      top: -100%;
-    }
   }
 
   &.list {
     .tiles {
       right: 100%;
+    }
+  }
+
+  &.open-item {
+    .controls {
+      top: -100%;
     }
   }
 }
