@@ -14,7 +14,12 @@ define [
     search: (e) =>
       e.preventDefault()
       e.stopImmediatePropagation()
-      params = $(e.target).serialize()
+      params = $(e.target)
+        .find('input[name=q]')
+          .blur()
+        .end()
+        .serialize()
+
       @collection.search(params)
 
     cool: (e) ->
