@@ -10,6 +10,8 @@ define [
       @fetch
         data: params
         reset: true
+        success: =>
+          @trigger 'searchSuccessful'
 
     url: '/items'
 
