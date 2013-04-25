@@ -6,8 +6,13 @@ define [
     initialize: ->
       @listenTo @collection,
         'markersAdded'     : @addItems
-        'mapSelect'        : @togglePreview
+        'mapSelect'        : @preview
         'searchSuccessful' : @showSearchResults
+        'open'             : @openPanel
+        'close'            : @closePanel
+
+      @listenTo app,
+        'map:Interaction' : @hidePreview
 
     addItems: (collection, render) =>
       @collection.each (item) =>
@@ -19,30 +24,36 @@ define [
       unless render is false
         @render()
 
-    togglePreview: (item) ->
+    preview: (item) ->
       selectedItem = @getView
         model: item
 
       if @currentView is selectedItem
-        @hideItems();
+        @hidePreview();
       else
         @currentView = selectedItem
-        @showItems();
+        @showPreview();
 
-    hideItems: ->
-      @$el.parent().addClass('hidden')
+    hidePreview: ->
+      @$el.css 'top', ''
       @currentView = null
 
-    showItems: ->
+    showPreview: ->
+      @previewHeight = window.innerHeight - @currentView.$el.innerHeight()
+      @$el.css 'top', @previewHeight
       @currentView.$el.siblings()
         .removeClass('current')
         .end()
         .addClass('current')
 
-        @$el.parent().removeClass('hidden')
-
     showSearchResults: =>
       console.log 'should show search results now.'
+
+    openPanel: ->
+      @$el.css 'top', '0'
+
+    closePanel: ->
+      @$el.css 'top', @previewHeight
 
   class Item extends Backbone.Layout
     template: 'item'
@@ -52,7 +63,8 @@ define [
       'click .arrow': 'closeItem'
 
     initialize: ->
-      @listenTo @model, 'mapSelect', @changeDistance
+      @listenTo @model,
+        'open', @changeDistance
 
     openItem: (event) =>
       return if @openView?
@@ -62,6 +74,7 @@ define [
         tagName: 'article'
       ).render().view
       @model.trigger 'open', @model
+      @$el.addClass 'current'
       @openView.$el.height(
         $('#main').height() - @$el.find('header').innerHeight()
       )
