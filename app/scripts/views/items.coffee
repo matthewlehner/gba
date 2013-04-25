@@ -7,7 +7,6 @@ define [
       @listenTo @collection,
         'markersAdded'     : @addItems
         'mapSelect'        : @preview
-        'searchSuccessful' : @showSearchResults
         'open'             : @openPanel
         'close'            : @closePanel
 
@@ -45,9 +44,6 @@ define [
         .removeClass('current')
         .end()
         .addClass('current')
-
-    showSearchResults: =>
-      console.log 'should show search results now.'
 
     openPanel: ->
       @$el.css 'top', '0'
