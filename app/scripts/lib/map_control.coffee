@@ -39,9 +39,11 @@ define [
 
     createMap: ->
       @map = L.map @el,
-        zoomControl: false
-        maxZoom: 16
-        minZoom: 2
+        zoomControl        : false
+        attributionControl : false
+        maxZoom            : 16
+        minZoom            : 2
+        worldCopyJump      : true
 
     createTiles: ->
       L.tileLayer 'http://{s}.tiles.mapbox.com/v3/mpl.map-glvcefkt/{z}/{x}/{y}.png',

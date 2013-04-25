@@ -6,7 +6,7 @@ define [
     initialize: ->
       @listenTo @collection,
         'markersAdded'     : @addItems
-        'mapSelect'        : @selectItem
+        'mapSelect'        : @togglePreview
         'searchSuccessful' : @showSearchResults
 
     addItems: (collection, render) =>
@@ -19,7 +19,7 @@ define [
       unless render is false
         @render()
 
-    selectItem: (item) ->
+    togglePreview: (item) ->
       selectedItem = @getView
         model: item
 
