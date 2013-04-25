@@ -12,11 +12,9 @@ define [
         className: 'map-marker'
 
       @listenTo @collection,
-        'reset': @resetMarkers
-        'add': @addMarker
-        'fetch': ->
-          # TODO something with fetched locations
-          console.log 'getting locations'
+        'reset' : @resetMarkers
+        'add'   : @addMarker
+        'fetch' : @resetMarkers
 
     afterRender: ->
       app.mapControl = new MapControl(@el)
