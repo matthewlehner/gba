@@ -34,10 +34,11 @@ define [
         @showPreview();
 
     hidePreview: ->
-      @$el.css 'top', ''
+      @$el.css 'top', window.innerHeight + 5
       @currentView = null
 
     showPreview: ->
+      @$el.css 'top', window.innerHeight
       @previewHeight = window.innerHeight - @currentView.$el.innerHeight()
       @$el.css 'top', @previewHeight
       @currentView.$el.siblings()
