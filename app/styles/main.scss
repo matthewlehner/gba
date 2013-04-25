@@ -40,6 +40,10 @@ body {
         display:block;
       }
     }
+
+    .item-container {
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
   }
 
   &.list {
@@ -51,14 +55,39 @@ body {
       height: 100%;
       top: 0;
       z-index: 100;
-
       margin-top: 50px;
-
       padding: 5px;
     }
 
     .geo-locate, .info {
       left: -100%;
+    }
+
+    .item {
+      margin-bottom: 5px;
+    }
+
+    &.open-item {
+      .item-container {
+        margin-top:0;
+      }
+
+      .item {
+        height: 0;
+        margin: 0;
+
+        header {
+          box-shadow: none;
+        }
+
+        &.current {
+          height: auto;
+
+          header {
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+          }
+        }
+      }
     }
   }
 

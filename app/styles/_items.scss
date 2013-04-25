@@ -2,17 +2,16 @@
   position: absolute;
   z-index: 201;
   width: 100%;
-  height: 72px;
-  bottom: 0;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  height: 100%;
+  top: 0;
   background: rgba(255,255,255,0.9);
   @include transition( height 0.3s ease,
-                       bottom 0.3s ease,
+                       top 0.3s ease,
                        background 0.3s ease);
   overflow: hidden;
 
   &.hidden {
-    bottom: -85px;
+    top: 100%;
   }
 }
 
@@ -28,12 +27,6 @@
         white-space: normal;
       }
     }
-
-    .arrow {
-      @include transform(rotate(-180deg));
-      border-left: none;
-      border-right: 1px solid rgba(0,0,0,0.2);
-    }
   }
 }
 
@@ -45,7 +38,6 @@
     @include transition(background 0.3s ease);
     position: relative;
   }
-
 
   .info {
     margin-right: 60px;
@@ -78,6 +70,16 @@
   .distance {
     margin-top: 8px;
     color: #999;
+  }
+}
+
+.open-item {
+  .current {
+    .arrow {
+      @include transform(rotate(-180deg));
+      border-left: none;
+      border-right: 1px solid rgba(0,0,0,0.2);
+    }
   }
 }
 
