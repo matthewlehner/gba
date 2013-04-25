@@ -7,12 +7,20 @@
   top: 0;
   background: rgba(255,255,255,0.9);
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  @include transition( height 0.3s ease,
-                       top 0.3s ease,
-                       background 0.3s ease);
+  @include transition( height 0.5s ease,
+                       top 0.5s ease,
+                       background 0.5s ease);
 
   &.hidden {
     top: 100%;
+  }
+
+  header {
+    @include clearfix;
+    padding: 18px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    @include transition(background 0.5s ease);
+    position: relative;
   }
 }
 
@@ -33,14 +41,6 @@
 
 .item {
   display: none;
-
-  header {
-    @include clearfix;
-    padding: 18px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    @include transition(background 0.3s ease);
-    position: relative;
-  }
 
   .info {
     margin-right: 60px;
@@ -66,8 +66,8 @@
     background-repeat: no-repeat;
     background-size: 30px;
     opacity: 0.5;
-    @include transition( transition-property-names((transform), webkit) 0.3s ease,
-                         border 0 ease 0.3s);
+    @include transition( transition-property-names((transform), webkit) 0.5s ease,
+                         border 0 ease 0.5s);
   }
 
   .distance {
