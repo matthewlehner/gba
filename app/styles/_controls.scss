@@ -7,7 +7,7 @@
   padding-right: 5px;
   width: 100%;
 
-  @include transition( top 0.3s ease );
+  @include transition( top 0.3s ease 0.1s);
 
   & > div {
     position: relative;

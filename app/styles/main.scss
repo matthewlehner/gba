@@ -94,6 +94,7 @@ body {
   &.open-item {
     .controls {
       top: -100%;
+      @include transition(top 0.3s ease-out 0.1s);
     }
   }
 }
