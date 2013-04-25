@@ -98,6 +98,13 @@
   }
 }
 
+.open-item {
+  .controls {
+    top: -150px;
+    @include transition(top 0.2s $ease-out-quart);
+  }
+}
+
 .list .view-toggle {
   @extend %map-svg;
 }

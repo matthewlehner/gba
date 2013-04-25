@@ -1,14 +1,15 @@
 .item-container {
   position: absolute;
-  z-index: 201;
+  z-index: 200;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   top: 0;
   background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
   @include transition( height 0.3s ease,
                        top 0.3s ease,
                        background 0.3s ease);
-  overflow: hidden;
 
   &.hidden {
     top: 100%;
@@ -31,6 +32,8 @@
 }
 
 .item {
+  display: none;
+
   header {
     @include clearfix;
     padding: 18px;
@@ -70,6 +73,10 @@
   .distance {
     margin-top: 8px;
     color: #999;
+  }
+
+  &.current {
+    display: block;
   }
 }
 

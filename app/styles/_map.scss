@@ -2,7 +2,7 @@
 
 .tiles {
   z-index: 100;
-  @include transition( right 0.3s ease );
+  @include transition( left 0.3s ease );
 }
 
 /* Markers */
