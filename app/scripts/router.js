@@ -5,10 +5,11 @@ define([
   'collections/items',
   'views/map_tiles',
   'views/controls',
-  'views/items'
+  'views/items',
+  'views/results'
 ],
 
-function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel) {
+function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -48,6 +49,19 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel) {
           css('height', '').
         end().
         removeClass('open-item');
+      });
+
+      app.layout.listenTo(app, 'viewToggle', function() {
+        if (this.resultsView == null) {
+          this.resultsView = new ResultsPanel({
+            collection : items,
+            className: 'results-container'
+          });
+          this.insertView('.results', this.resultsView).render();
+        }
+
+        $('.results').height(window.innerHeight - 55);
+        this.$el.toggleClass('map list');
       });
 
       items.fetch({reset: true});
