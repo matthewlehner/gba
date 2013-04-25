@@ -14,7 +14,6 @@ define [
       @listenTo @collection,
         'reset' : @resetMarkers
         'add'   : @addMarker
-        'fetch' : @resetMarkers
 
     afterRender: ->
       app.mapControl = new MapControl(@el)
