@@ -8,7 +8,7 @@ define([
   'views/items'
 ],
 
-function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
+function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -29,7 +29,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
           el: false,
           collection: items
         }),
-        '' : new ItemsView({
+        '' : new ItemsPanel({
           tag: 'div',
           className: 'item-container hidden',
           collection: items

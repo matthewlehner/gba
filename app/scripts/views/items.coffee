@@ -2,7 +2,7 @@ define [
   'app'
 ], (app) ->
 
-  class ItemsView extends Backbone.Layout
+  class ItemsPanel extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
         'markersAdded'     : @addItems
@@ -104,4 +104,4 @@ define [
     serialize: ->
       @model.toJSON()
 
-  return ItemsView
+  return ItemsPanel
