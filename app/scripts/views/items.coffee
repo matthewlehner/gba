@@ -61,7 +61,7 @@ define [
 
     initialize: ->
       @listenTo @model,
-        'open', @changeDistance
+        'change:distance', @changeDistance
 
     openItem: (event) =>
       return if @openView?
