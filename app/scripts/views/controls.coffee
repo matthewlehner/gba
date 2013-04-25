@@ -6,7 +6,7 @@ define [
 
     events:
       'submit form'        : 'search'
-      'click .view-toggle' : 'listView'
+      'click .view-toggle' : 'viewToggle'
       'click .filters'     : 'filters'
       'click .geo-locate'  : 'geo'
       'click .info'        : 'info'
@@ -27,8 +27,8 @@ define [
       e.stopImmediatePropagation()
       alert "#{e.currentTarget.className}, #{e.originalEvent}"
 
-    listView: (e) =>
-      @cool(e)
+    viewToggle: (e) =>
+      app.trigger 'viewToggle'
 
     filters: (e) =>
       @cool(e)
