@@ -37,7 +37,7 @@ define [
       @map.on 'locationerror', @locationError
       @locate()
 
-      @map.on 'movestart zoomstart click', (e) ->
+      @map.on 'click', (e) ->
         app.trigger 'map:Interaction'
 
     createMap: ->
