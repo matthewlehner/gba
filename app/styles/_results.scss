@@ -1,0 +1,52 @@
+.map .results {
+  left: 100%;
+}
+
+.list .results {
+  left: 0;
+}
+
+.results {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  margin-top: 45px;
+  padding: 5px;
+  padding-bottom: 5px;
+
+  @include transition( left 0.5s ease );
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.results-container {
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .item {
+    display: block;
+    border-bottom: 1px solid #D7D7D7;
+
+    header {
+      box-shadow: none;
+      padding: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .info {
+      margin-right: 0;
+    }
+
+    .arrow {
+      display: none;
+    }
+  }
+}
