@@ -20,7 +20,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
       var items = new ItemCollection();
       app.items = items;
 
-      app.useLayout('map_panel').setViews({
+      app.useLayout('map_panel').insertViews({
         '.controls': new ControlsView({
           el: false,
           collection: items
@@ -29,8 +29,9 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsView) {
           el: false,
           collection: items
         }),
-        '.item-container' : new ItemsView({
-          el: false,
+        '' : new ItemsView({
+          tag: 'div',
+          className: 'item-container hidden',
           collection: items
         })
       }).render();
