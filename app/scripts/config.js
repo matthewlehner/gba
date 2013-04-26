@@ -10,7 +10,9 @@ require.config({
     backbone: '../components/backbone/backbone',
     lodash: '../components/lodash/dist/lodash.underscore',
     'backbone.layoutmanager': '../components/layoutmanager/backbone.layoutmanager',
-    'FastClick': '../components/fastclick/lib/fastclick'
+    'FastClick': '../components/fastclick/lib/fastclick',
+    'spin': '../components/spin.js/spin',
+    'jquery.spinner': '../components/spin.js/jquery.spin'
   },
 
   map: {

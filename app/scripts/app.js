@@ -1,6 +1,7 @@
 define([
   'backbone.layoutmanager',
-  'templates'
+  'templates',
+  'jquery.spinner'
 ],
 
 function(LayoutManager, JST) {
