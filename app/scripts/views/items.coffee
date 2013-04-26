@@ -5,10 +5,10 @@ define [
   class ItemsPanel extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
-        'markersAdded'     : @addItems
-        'mapSelect'        : @preview
-        'open'             : @openPanel
-        'close'            : @closePanel
+        'markersAdded'           : @addItems
+        'mapSelect selectResult' : @preview
+        'open'                   : @openPanel
+        'close'                  : @closePanel
 
       @listenTo app,
         'map:Interaction' : @hidePreview

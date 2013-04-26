@@ -12,8 +12,9 @@ define [
         className: 'map-marker'
 
       @listenTo @collection,
-        'reset' : @resetMarkers
-        'add'   : @addMarker
+        'reset'        : @resetMarkers
+        'add'          : @addMarker
+        'selectResult' : @focusMarker
 
     afterRender: ->
       app.mapControl = new MapControl(@el)
@@ -45,5 +46,8 @@ define [
 
     clickMarker: (e, item) =>
       item.trigger('mapSelect', item)
+
+    focusMarker: (item) =>
+      app.mapControl.map.panTo item.marker.getLatLng()
 
   return MapTiles
