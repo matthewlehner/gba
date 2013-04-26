@@ -2,15 +2,16 @@
   "name": "gba",
   "version": "0.0.0",
   "dependencies": {
-    "requirejs": "~2.1.4"
-  , "jquery": "~2.0.0"
-  , "lodash": "*"
-  , "backbone": "~1.0.0"
-  , "layoutmanager": "~0.8.7"
-  , "leaflet": "~0.5.1"
-  , "normalize-scss": "*"
-  , "bourbon": "*"
-  , "fastclick": "*"
+    "requirejs"      : "~2.1.4",
+    "jquery"         : "~2.0.0",
+    "lodash"         : "*",
+    "backbone"       : "~1.0.0",
+    "layoutmanager"  : "~0.8.7",
+    "leaflet"        : "~0.5.1",
+    "normalize-scss" : "*",
+    "bourbon"        : "*",
+    "fastclick"      : "*",
+    "spin.js"        : "*"
   },
   "devDependencies": {}
 }
