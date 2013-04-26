@@ -4,8 +4,13 @@ define [
   class ControlsView extends Backbone.Layout
     template: 'map/controls'
 
+    initialize: ->
+      @listenTo @collection,
+        'searching'        : @searching
+        'searchSuccessful' : @searchSuccess
+
     events:
-      'submit form'        : 'search'
+      'submit #search'     : 'search'
       'click .view-toggle' : 'viewToggle'
       'click .filters'     : 'filters'
       'click .geo-locate'  : 'geo'
@@ -33,5 +38,11 @@ define [
 
     info: (e) =>
       alert 'Information about the Green Building App.'
+
+    searching: ->
+      @$el.find('.search-label').addClass 'active-search'
+
+    searchSuccess: ->
+      @$el.find('.search-label').removeClass 'active-search'
 
   return ControlsView

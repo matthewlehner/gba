@@ -13,6 +13,8 @@ define [
         success: =>
           @trigger 'searchSuccessful'
 
+      @trigger 'searching'
+
     url: '/items'
 
   return ItemCollection
