@@ -29,6 +29,20 @@
   padding-left: 10px;
   padding-right: 10px;
 
+  &:empty {
+    height: 100%;
+    background: none;
+    box-shadow: none;
+
+    &:before {
+      position: absolute;
+      content: 'No results found for this search. Please try again!';
+      top: 40%;
+      width: 100%;
+      text-align:center;
+    }
+  }
+
   .item {
     display: block;
     border-bottom: 1px solid #D7D7D7;
