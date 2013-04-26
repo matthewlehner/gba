@@ -22,21 +22,16 @@ define [
 
       @collection.search(params)
 
-    cool: (e) ->
-      e.preventDefault()
-      e.stopImmediatePropagation()
-      alert "#{e.currentTarget.className}, #{e.originalEvent}"
-
     viewToggle: (e) =>
       app.trigger 'viewToggle'
 
     filters: (e) =>
-      @cool(e)
+      alert 'filters dialogue should be triggered'
 
     geo: (e) =>
       app.trigger 'geoLocate'
 
     info: (e) =>
-      @cool(e)
+      alert 'Information about the Green Building App.'
 
   return ControlsView
