@@ -23,7 +23,15 @@ define [
   class ResultItem extends Backbone.Layout
     template: 'item'
 
+    events:
+      'click header' : 'selectItem'
+
     serialize: ->
       @model.toJSON()
+
+    selectItem: =>
+      @model.trigger 'selectResult', @model
+      app.trigger 'viewToggle'
+
 
   return ResultsPanel
