@@ -66,8 +66,7 @@ define [
         setView: true
 
     locationError: (e) =>
-      console.log 'location error'
-      console.log e
+      app.trigger 'locationError'
       unless @currentMarker
         @map.setView([46, -95], 2)
 
