@@ -1,8 +1,10 @@
 <header>
   <div class='info'>
 
-    <% if ((_.isUndefined('image'))) { %>
-    <figure class='featured-image'></figure>
+    <% if ((!_.isUndefined(featured_image))) { %>
+    <figure class='featured-image'>
+        <img src=<%- featured_image %>/>
+    </figure>
     <% }; %>
 
     <p><%- name %></p>
