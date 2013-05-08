@@ -19,6 +19,11 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
 
     index: function() {
       var items = new ItemCollection();
+      items.listenToOnce(app, 'locationfound', function() {
+        var latlng = '' + app.mapControl.currentLocation.lat + ',' + app.mapControl.currentLocation.lng;
+        items.search({latlng: latlng});
+      });
+
       app.items = items;
 
       app.useLayout('map_panel').insertViews({
@@ -64,7 +69,6 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
         this.$el.toggleClass('map list');
       });
 
-      items.fetch({reset: true});
 
     }
   });
