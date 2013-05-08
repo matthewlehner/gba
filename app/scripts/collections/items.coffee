@@ -1,4 +1,4 @@
-define [ 
+define [
   'app'
   'models/item'
 ], (app, ItemModel) ->
