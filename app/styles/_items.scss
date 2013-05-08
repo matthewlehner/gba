@@ -53,6 +53,15 @@
     }
   }
 
+  .featured-image {
+    float: left;
+    margin-right: 5px;
+
+    img {
+      max-height: 36px;
+    }
+  }
+
   .arrow {
     position: absolute;
     top: 50%;
