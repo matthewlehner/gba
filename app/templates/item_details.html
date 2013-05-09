@@ -2,6 +2,20 @@
 
 <!-- <section class='actions'></section> -->
 
+<% if (pictures.length > 0) { %>
+<section class='pictures'>
+  <figure class='images'>
+    <img src='<%- pictures[0]['url'] %>' />
+  </figure>
+
+  <% if (pictures.length > 1) { %>
+    <% _.forEach(pictures, function(picture) { %>
+      <img src='<%- picture['thumbnail'] %>' />
+    <% }); %>
+  <% }; %>
+</section>
+<% }; %>
+
 <% if (typeof summary !== "undefined" && summary !== null) { %>
 <section class='summary'>
   <h2>Summary</h2>
