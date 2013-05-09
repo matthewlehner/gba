@@ -31,6 +31,7 @@ define [
         @hidePreview();
       else
         @currentView = selectedItem
+        item.fetch();
         @showPreview();
 
     hidePreview: ->
@@ -65,8 +66,6 @@ define [
 
     openItem: (event) =>
       return if @openView?
-
-      @model.fetch()
 
       @openView = @insertView(new ItemDetails
         model: @model
