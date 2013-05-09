@@ -1,7 +1,7 @@
 <header>
   <div class='info'>
 
-    <% if ((!_.isUndefined(featured_image))) { %>
+    <% if (typeof featured_image !== "undefined" && featured_image !== null) { %>
     <figure class='featured-image'>
         <img src=<%- featured_image %>/>
     </figure>
