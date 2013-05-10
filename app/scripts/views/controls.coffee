@@ -38,10 +38,10 @@ define [
 
     geo: (e) =>
       app.trigger 'geoLocate'
-      @$el.find('.geo-locate').spin('small').addClass 'active-geo'
+      @$el.find('.geo-locate').addClass 'active-geo'
 
     geoFinish: =>
-      @$el.find('.geo-locate').spin(false).removeClass 'active-geo'
+      @$el.find('.geo-locate').removeClass 'active-geo'
 
     info: (e) =>
       alert 'Information about the Green Building App.'
