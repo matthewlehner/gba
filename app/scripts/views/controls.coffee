@@ -10,7 +10,8 @@ define [
         'searchSuccessful' : @searchSuccess
 
       @listenTo app,
-        'locationfound locationError': @geoFinish
+        'locationfound'    : @geoFinish
+        'locationError'    : @geoError
 
     events:
       'submit #search'     : 'search'
@@ -42,6 +43,11 @@ define [
 
     geoFinish: =>
       @$el.find('.geo-locate').removeClass 'active-geo'
+
+    geoError: =>
+      alert 'Location service is off. The Green Building App needs access to your location to find green buildings nearby. Please turn on Location Services in your device settings.'
+      @geoFinish()
+
 
     info: (e) =>
       alert 'Information about the Green Building App.'
