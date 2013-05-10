@@ -38,13 +38,13 @@ module.exports = function (grunt) {
       },
       jst: {
         files: [
-          '<%= yeoman.app %>/templates/*.html',
+          '<%= yeoman.app %>/templates/{,*/}*.html',
         ],
         tasks: ['jst']
       },
       livereload: {
         files: [
-          '<%= yeoman.app %>/*.html',
+          '<%= yeoman.app %>/{,*/}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        path: 'http://localhost:<%= connect.options.port %>'
+        path: 'http://gbad.dev'
       }
     },
     clean: {
