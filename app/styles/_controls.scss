@@ -61,7 +61,6 @@
 
   .search-label {
     @extend %button-background;
-    @extend %search-svg;
     display: inline-block;
     width: 41px;
     height: 30px;
@@ -70,8 +69,17 @@
     position: absolute;
     border-right: 1px solid #d7d7d7;
 
+    svg {
+      margin: 5px;
+      margin-left: 10px;
+      width:  21px;
+      height: 21px;
+    }
+
     &.active-search {
-      background-image: none;
+      svg {
+        display: none;
+      }
     }
   }
 
