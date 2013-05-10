@@ -100,18 +100,38 @@
   }
 
   .geo-locate {
-    @extend %button;
-    @extend %geo-svg;
+    position: absolute;
+    background-color: rgba(255,255,255,0.94);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+    width: 40px;
+    height: 40px;
+    @include transition(left 0.3s ease-out);
     top: 55px;
 
+    svg {
+      padding-top: 1px;
+      padding-left: 4px;
+    }
+
     &.active-geo {
-      background-image: none;
+      path {
+        @include animation(activated 2s ease-in);
+        @include animation-iteration-count(infinite);
+        stroke: darken($currentLocation, 10%);
+        stroke-width: 0.5;
+      }
     }
   }
 
   .info {
     @extend %button;
-    @extend %info-svg;
+    svg {
+      margin: 10px;
+      margin-left: 11px;
+      width:  20px;
+      height: 20px;
+    }
     top: 105px;
   }
 }
@@ -125,4 +145,19 @@
 
 .list .view-toggle {
   @extend %map-svg;
+}
+
+@include keyframes(activated) {
+  from {
+    fill: $currentLocation;
+    stroke: darken($currentLocation, 10%);
+  }
+  50%{
+    fill: lighten($currentLocation, 15%);
+    stroke: lighten($currentLocation, 10%);
+  }
+  to {
+    fill: $currentLocation;
+    stroke: darken($currentLocation, 10%);
+  }
 }
