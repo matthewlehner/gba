@@ -1,0 +1,19 @@
+<div class='modal'>
+
+  <% if (typeof header !== "undefined" && header !== null) { %>
+  <header>
+    <%= header %>
+    <!-- Location service is off -->
+  </header>
+  <% }; %>
+
+  <% if (typeof content !== "undefined" && content !== null) { %>
+  <section class='content'>
+    <%= content %>
+  </section>
+  <% }; %>
+
+  <footer>
+    OK
+  </footer>
+</div>
