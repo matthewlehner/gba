@@ -19,6 +19,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
 
     index: function() {
       var items = new ItemCollection();
+
       items.listenToOnce(app, 'locationfound', function() {
         var latlng = '' + app.mapControl.currentLocation.lat + ',' + app.mapControl.currentLocation.lng;
         items.search({latlng: latlng});
