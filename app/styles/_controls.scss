@@ -90,7 +90,15 @@
     width: 40px;
     height: 40px;
     @extend %button-background;
-    @extend %list-svg;
+
+    svg {
+      position: absolute;
+      top: 0;
+      margin: 10px;
+      margin-left: 11px;
+      width:  20px;
+      height: 20px;
+    }
 
     &:before {
       content: '';
