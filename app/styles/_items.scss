@@ -67,21 +67,20 @@
     }
   }
 
-  .arrow {
+  .open-toggle {
     position: absolute;
     top: 50%;
     right: 0;
     margin-top: -((80px - 18)/2);
     border-left: 1px solid rgba(0,0,0,0.2);
-    width: 40px + 18;
-    height: 80px - 18;
-    @extend %arrow-svg;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 30px;
-    opacity: 0.5;
-    @include transition( transition-property-names((transform), webkit) 0.5s ease,
-                         border 0 ease 0.5s);
+    width: 58px;
+    height: 62px;
+    padding: 10px;
+
+    svg {
+      @include transition( transition-property-names((transform), webkit) 0.5s ease,
+                           border 0 ease 0.5s);
+    }
   }
 
   .distance {
@@ -96,10 +95,8 @@
 
 .open-item {
   .current {
-    .arrow {
-      @include transform(rotate(-180deg));
-      border-left: none;
-      border-right: 1px solid rgba(0,0,0,0.2);
+    .open-toggle svg {
+      @include transform(rotate(225deg));
     }
   }
 }
