@@ -83,8 +83,9 @@ define [
       return unless @openView?
 
       @model.trigger 'close', @model
-      @removeView @openView
-      delete @openView
+      @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
+        @removeView @openView
+        @openView = null
 
       event.stopImmediatePropagation()
 
