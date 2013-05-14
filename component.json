@@ -11,7 +11,9 @@
     "normalize-scss" : "*",
     "bourbon"        : "*",
     "fastclick"      : "*",
-    "spin.js"        : "*"
+    "spin.js"        : "*",
+    "jquery.lazyload": "*"
+
   },
   "devDependencies": {}
 }
