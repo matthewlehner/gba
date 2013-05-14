@@ -58,7 +58,7 @@ define [
 
     events:
       'click header': 'openItem'
-      'click .arrow': 'closeItem'
+      'click .open-toggle': 'closeItem'
 
     initialize: ->
       @listenTo @model,
