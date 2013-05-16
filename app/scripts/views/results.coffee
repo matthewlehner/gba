@@ -9,6 +9,7 @@ define [
         'mapSelect'        : @preview
 
       @addResults(@collection, false)
+      @on 'afterRender', @lazyLoadImages
 
     addResults: (collection, render) =>
       @collection.each (item) =>
@@ -19,6 +20,14 @@ define [
 
       unless render is false
         @render()
+
+    lazyLoadImages: =>
+      container = @$el.parent()
+      @$el.find('img.lazy').lazyload
+        effect: 'fadeIn'
+        container: container
+
+      container.trigger 'scroll'
 
   class ResultItem extends Backbone.Layout
     template: 'item'
