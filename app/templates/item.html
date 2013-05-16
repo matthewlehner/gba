@@ -1,11 +1,15 @@
 <header>
   <div class='info'>
 
-    <% if (typeof featured_image !== "undefined" && featured_image !== null) { %>
     <figure class='featured-image'>
-      <img src=<%- featured_image %>/>
+      <img
+      <% if (typeof featured_image !== "undefined" && featured_image !== null) { %>
+        data-original=<%- featured_image %> class='lazy'
+      <% }; %>
+        src='images/logo-thumb.png'
+        width='36' height='36'
+      />
     </figure>
-    <% }; %>
 
     <p><%- name %></p>
 
