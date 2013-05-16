@@ -5,14 +5,15 @@ require.config({
   deps: ['main'],
 
   paths: {
-    jquery: '../components/jquery/jquery',
-    leaflet: '../components/leaflet/dist/leaflet-src',
-    backbone: '../components/backbone/backbone',
-    lodash: '../components/lodash/dist/lodash.underscore',
-    'backbone.layoutmanager': '../components/layoutmanager/backbone.layoutmanager',
-    'FastClick': '../components/fastclick/lib/fastclick',
-    'spin': '../components/spin.js/spin',
-    'jquery.spinner': '../components/spin.js/jquery.spin'
+    jquery                   : '../components/jquery/jquery',
+    leaflet                  : '../components/leaflet/dist/leaflet-src',
+    backbone                 : '../components/backbone/backbone',
+    lodash                   : '../components/lodash/dist/lodash.underscore',
+    'backbone.layoutmanager' : '../components/layoutmanager/backbone.layoutmanager',
+    'FastClick'              : '../components/fastclick/lib/fastclick',
+    'spin'                   : '../components/spin.js/spin',
+    'jquery.spinner'         : '../components/spin.js/jquery.spin',
+    'jquery.lazyload'        : '../components/jquery.lazyload/jquery.lazyload'
   },
 
   map: {
@@ -31,6 +32,9 @@ require.config({
     'backbone.layoutmanager': {
       deps: [ 'backbone' ],
       exports: 'Backbone.Layout'
+    },
+    'jquery.lazyload': {
+      deps: [ 'jquery' ]
     }
   }
 });
