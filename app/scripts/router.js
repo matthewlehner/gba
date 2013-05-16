@@ -69,8 +69,6 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
         $('.results').height(window.innerHeight - 55);
         this.$el.toggleClass('map list');
       });
-
-
     }
   });
 
