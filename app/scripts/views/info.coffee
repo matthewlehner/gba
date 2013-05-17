@@ -8,7 +8,6 @@ define [
       'click footer': 'dismiss'
 
     dismiss: =>
-      console.log 'dismissing!'
       @$el.addClass 'fade'
 
       setTimeout =>
