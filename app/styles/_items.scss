@@ -145,4 +145,14 @@
       font-size: 1.1em;
     }
   }
+
+  .pictures {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+
+    a {
+      text-decoration: none;
+    }
+  }
 }
