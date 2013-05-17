@@ -52,6 +52,7 @@
     }
 
     header {
+      position: relative;
       box-shadow: none;
       padding: 0;
       padding-top: 10px;
@@ -60,10 +61,6 @@
 
     .info {
       margin-right: 0;
-    }
-
-    .open-toggle {
-      display: none;
     }
   }
 }
