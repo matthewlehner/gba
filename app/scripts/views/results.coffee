@@ -30,7 +30,7 @@ define [
       container.trigger 'scroll'
 
   class ResultItem extends Backbone.Layout
-    template: 'item'
+    template: 'item_result'
 
     events:
       'click header' : 'selectItem'
