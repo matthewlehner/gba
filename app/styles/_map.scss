@@ -23,7 +23,7 @@
     display: block;
     content: '';
 
-    @include transition( background, 0.2s, ease);
+    @include transition( all 0.2s ease);
   }
 
   &.active {
