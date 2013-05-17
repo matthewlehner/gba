@@ -17,4 +17,7 @@ define [
 
     url: '/items'
 
+    comparator: (item) ->
+      item.get 'distance'
+
   return ItemCollection
