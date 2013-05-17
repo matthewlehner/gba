@@ -39,13 +39,15 @@ define [
       @currentView = null
 
     showPreview: ->
-      @$el.css 'top', window.innerHeight
       @previewHeight = window.innerHeight - @currentView.$el.innerHeight()
       @$el.css 'top', @previewHeight
-      @currentView.$el.siblings()
-        .removeClass('current')
+
+      @currentView.$el
+        .siblings()
+          .removeClass('current')
         .end()
         .addClass('current')
+        .find('.lazy').trigger 'appear'
 
     openPanel: ->
       @$el.css 'top', '0'
@@ -63,6 +65,12 @@ define [
     initialize: ->
       @listenTo @model,
         'change:distance', @changeDistance
+
+      @on 'afterRender', @imageLazyLoader
+
+    imageLazyLoader: =>
+      @$el.find('.lazy').lazyload
+        effect: 'fadeIn'
 
     openItem: (event) =>
       return if @openView?
