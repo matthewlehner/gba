@@ -12,7 +12,7 @@ define [
       @listenTo @collection,
         'searchSuccessful' : @addResults
 
-      @addResults(@collection, false)
+      @on 'afterRender', @addResults
 
     events:
       'scroll' : 'loadNextResults'
