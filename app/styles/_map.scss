@@ -24,19 +24,42 @@
   }
 }
 
-.leaflet-div-icon {
-  @extend %marker;
+@mixin icon-colour($colour) {
   &:before {
-    background: $building;
-    border-color: darken($building, 5%);
+    background: $colour;
+    border-color: darken($colour, 5%);
+  }
+}
+
+.leaflet-marker-icon {
+  @extend %marker;
+
+  &.building{
+    @include icon-colour($building);
+  }
+
+  &.company {
+    @include icon-colour($company);
+  }
+
+  &.openspace {
+    @include icon-colour($openspace);
+  }
+
+  &.program {
+    @include icon-colour($program);
+  }
+
+  &.infrastructure {
+    @include icon-colour($infrastructure);
+  }
+
+  &.neighbourhood {
+    @include icon-colour($neighbourhood);
   }
 }
 
 .map-current-location {
   @extend %marker;
-
-  &:before{
-    background: $currentLocation;
-    border-color: darken($currentLocation, 5%);
-  }
+  @include icon-colour($currentLocation);
 }

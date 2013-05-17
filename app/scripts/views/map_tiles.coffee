@@ -34,9 +34,10 @@ define [
     addMarker: (item) ->
       lat = item.get 'lat'
       lng = item.get 'lng'
+      type = item.get('type').toLowerCase()
 
       if lat? and lng?
-        marker = app.mapControl.addMarker(lat, lng).on 'click', (e) =>
+        marker = app.mapControl.addMarker(lat, lng, type).on 'click', (e) =>
           @clickMarker(e, item)
 
         # let the model know that it has a marker.

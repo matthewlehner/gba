@@ -17,8 +17,8 @@ define [
 
       @items = L.layerGroup().addTo(@map)
 
-    addMarker: (lat, lng) ->
-      marker = new MapMarker(lat, lng)
+    addMarker: (lat, lng, className) ->
+      marker = new MapMarker(lat, lng, className)
       @items.addLayer marker
       marker
 
