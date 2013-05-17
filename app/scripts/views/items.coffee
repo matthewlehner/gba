@@ -30,16 +30,21 @@ define [
       if @currentView is selectedItem
         @hidePreview();
       else
+        if @currentView
+          $(@currentView.model.marker._icon).removeClass 'active'
+
         @currentView = selectedItem
         item.fetch();
         @showPreview();
 
     hidePreview: ->
       @$el.css 'top', window.innerHeight + 5
+      $(@currentView.model.marker._icon).removeClass 'active'
       @currentView = null
 
     showPreview: ->
       @previewHeight = window.innerHeight - @currentView.$el.innerHeight()
+      $(@currentView.model.marker._icon).addClass 'active'
       @$el.css 'top', @previewHeight
 
       @currentView.$el
