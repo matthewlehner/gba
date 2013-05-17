@@ -3,6 +3,8 @@ define [
 ], (app) ->
 
   class ResultsPanel extends Backbone.Layout
+    template: 'results'
+
     initialize: ->
       @listenTo @collection,
         'searchSuccessful' : @addResults
@@ -25,7 +27,9 @@ define [
       container = @$el.parent()
       @$el.find('img.lazy').lazyload
         effect: 'fadeIn'
-        container: container
+        container: @$el
+
+      @$el.trigger 'scroll'
 
       container.trigger 'scroll'
 

@@ -61,9 +61,9 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
         if (this.resultsView == null) {
           this.resultsView = new ResultsPanel({
             collection : items,
-            className: 'results-container'
+            el: false
           });
-          this.insertView('.results', this.resultsView).render();
+          this.insertView(this.resultsView).render();
         }
 
         $('.results').height(window.innerHeight - 55);
