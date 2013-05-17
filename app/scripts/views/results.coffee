@@ -6,32 +6,49 @@ define [
     template: 'results'
 
     initialize: ->
+      @page = 0
+      @prevScrollY = 0
+
       @listenTo @collection,
         'searchSuccessful' : @addResults
-        'mapSelect'        : @preview
 
       @addResults(@collection, false)
-      @on 'afterRender', @lazyLoadImages
 
-    addResults: (collection, render) =>
-      @collection.each (item) =>
-        @insertView new ResultItem
+    events:
+      'scroll' : 'loadNextResults'
+
+    addResults: =>
+      begin = @page * 40
+      end = begin + 39
+      @page += 1
+
+      for item in @collection.slice(begin, end)
+        resultLayout = new ResultItem
           id: "item-#{item.id}"
           className: "item"
           model: item
 
-      unless render is false
-        @render()
+        @insertView('.results-container', resultLayout).render()
+
+      @lazyLoadImages()
 
     lazyLoadImages: =>
-      container = @$el.parent()
-      @$el.find('img.lazy').lazyload
+      @$el.find('img.lazy')
+      .lazyload
         effect: 'fadeIn'
         container: @$el
+      .removeClass 'lazy'
 
       @$el.trigger 'scroll'
 
-      container.trigger 'scroll'
+    loadNextResults: =>
+      scrollY = @$el.scrollTop() + @$el.height()
+      @docHeight = @page * 40 * 57 #page number times 40 items per page, times 57px per item
+
+      if ( scrollY >= @docHeight - 1140 ) and @prevScrollY <= scrollY
+        @addResults()
+
+      @prevScrollY = scrollY
 
   class ResultItem extends Backbone.Layout
     template: 'item_result'
