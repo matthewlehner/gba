@@ -5,7 +5,7 @@ define [
 
   class ItemModel extends Backbone.Model
     initialize: ->
-      @set 'distance', 'No Geolocation'
+      @setDistance()
       @on 'addMarker', @hasMarker
 
     hasMarker: (marker) =>
@@ -16,7 +16,11 @@ define [
         app.on 'locationfound', @setDistance
 
     setDistance: =>
-      distance = app.mapControl.getDistance @marker.getLatLng()
-      @set 'distance', new DistanceHelper(distance).humanize()
+      if app.mapControl.currentLocation?
+        distance = app.mapControl.getDistance
+          'lat': @get 'lat'
+          'lng': @get 'lng'
+        @set 'distance', distance
+        @set 'human_distance', new DistanceHelper(distance).humanize()
 
   return ItemModel
