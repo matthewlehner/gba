@@ -23,4 +23,7 @@ define [
         @set 'distance', distance
         @set 'human_distance', new DistanceHelper(distance).humanize()
 
+      else
+        @set 'human_distance', 'No Geolocation'
+
   return ItemModel
