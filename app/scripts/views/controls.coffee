@@ -17,6 +17,7 @@ define [
 
     events:
       'submit #search'     : 'search'
+      'click .search-clear': 'clearSearch'
       'click .view-toggle' : 'viewToggle'
       'click .filters'     : 'filters'
       'click .geo-locate'  : 'geo'
@@ -32,6 +33,13 @@ define [
         .serialize()
 
       @collection.search(params)
+
+    clearSearch: (e) =>
+      $('#q').val('')
+      @collection.fetch()
+
+      if $('#main').hasClass('list')
+        @viewToggle()
 
     viewToggle: (e) =>
       app.trigger 'viewToggle'
