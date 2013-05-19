@@ -10,12 +10,19 @@ define [
       @prevScrollY = 0
 
       @listenTo @collection,
-        'searchSuccessful' : @addResults
+        'searchSuccessful' : @resetResults
 
       @on 'afterRender', @addResults
 
     events:
       'scroll' : 'loadNextResults'
+
+    resetResults: =>
+      @getViews(".results-container").each (resultView) ->
+        resultView.remove()
+
+      @page = 0
+      @addResults()
 
     addResults: =>
       begin = @page * 40
