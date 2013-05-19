@@ -7,13 +7,18 @@ define [
 
     events:
       'click footer': 'dismiss'
+      'change input': 'filterType'
+
+    serialize: ->
+      'header': 'Filter Map Markers'
+      'content': ' '
 
     initialize: ->
       $content = $("<form class='filter-form'>")
 
       for type, shown of @collection.filterTypes()
         checked = if shown then 'checked' else ''
-        $content.append("<label for='#{type}'>#{type} <input type='checkbox' id='#{type}' name='#{type}' #{checked}/></label>")
+        $content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div></div></label>"
 
       @render()
       @$el.find('.content').append $content
@@ -31,12 +36,15 @@ define [
 
       @$el.addClass 'fade'
 
-    serialize: ->
-      attrs = 
-        'header': 'Filter Map Markers'
-        'content': ' '
+    filterType: (e) ->
+      $checkbox = $(e.target)
+      type = $checkbox.attr('id')
+      @collection.typesFilter[type] = $checkbox.prop('checked')
 
-      return attrs
+      if type is "Buildings with audio"
+        $('.audio-tour').toggle()
+      else
+        $(".#{type.toLowerCase()}").toggle()
 
   return FilterView
 
