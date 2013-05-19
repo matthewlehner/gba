@@ -17,6 +17,10 @@ define [
         success: =>
           @trigger 'searchSuccessful'
 
+          if $('#main').hasClass 'map'
+            app.trigger 'viewToggle'
+
+
       @trigger 'searching'
 
     url: '/items'
