@@ -22,7 +22,7 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
 
       items.listenToOnce(app, 'locationfound', function() {
         var latlng = '' + app.mapControl.currentLocation.lat + ',' + app.mapControl.currentLocation.lng;
-        items.search({latlng: latlng});
+        items.fetch({data: {latlng: latlng}, reset: true});
       });
 
       app.items = items;
