@@ -39,10 +39,10 @@
   }
 }
 
-@mixin icon-colour($colour) {
+@mixin icon-color($color) {
   &:before {
-    background: $colour;
-    border-color: darken($colour, 5%);
+    background-color: $color;
+    border-color: darken($color, 5%);
   }
 }
 
@@ -50,31 +50,31 @@
   @extend %marker;
 
   &.building{
-    @include icon-colour($building);
+    @include icon-color($building);
   }
 
   &.company {
-    @include icon-colour($company);
+    @include icon-color($company);
   }
 
   &.openspace {
-    @include icon-colour($openspace);
+    @include icon-color($openspace);
   }
 
   &.program {
-    @include icon-colour($program);
+    @include icon-color($program);
   }
 
   &.infrastructure {
-    @include icon-colour($infrastructure);
+    @include icon-color($infrastructure);
   }
 
   &.neighbourhood {
-    @include icon-colour($neighbourhood);
+    @include icon-color($neighbourhood);
   }
 }
 
 .map-current-location {
   @extend %marker;
-  @include icon-colour($currentLocation);
+  @include icon-color($currentLocation);
 }
