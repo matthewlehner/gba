@@ -17,10 +17,11 @@ define [
         'selectResult' : @focusMarker
 
     afterRender: ->
-      app.mapControl = new MapControl(@el)
+      @mapControl = new MapControl(@el)
+      app.mapControl = @mapControl
 
     resetMarkers: ->
-      app.mapControl.clearMarkers()
+      @mapControl.clearMarkers()
       @addMarkers()
 
     addMarkers: ->
@@ -34,13 +35,15 @@ define [
     addMarker: (item) ->
       lat = item.get 'lat'
       lng = item.get 'lng'
-      type = item.get('type').toLowerCase()
+
       if item.hasAudioFile()
-        type = "#{type} audio-tour"
+        className = "audio-tour"
+      else
+        className = item.get('type').toLowerCase()
 
 
       if lat? and lng?
-        marker = app.mapControl.addMarker(lat, lng, type).on 'click', (e) =>
+        marker = @mapControl.addMarker(lat, lng, className).on 'click', (e) =>
           @clickMarker(e, item)
 
         # let the model know that it has a marker.
@@ -52,6 +55,6 @@ define [
       item.trigger('mapSelect', item)
 
     focusMarker: (item) =>
-      app.mapControl.map.panTo item.marker.getLatLng()
+      @mapControl.map.panTo item.marker.getLatLng()
 
   return MapTiles
