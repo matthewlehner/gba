@@ -26,4 +26,8 @@ define [
       else
         @set 'human_distance', 'No Geolocation'
 
+
+    hasAudioFile: ->
+      @get('audio_count') > 0
+
   return ItemModel
