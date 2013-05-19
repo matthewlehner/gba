@@ -35,6 +35,9 @@ define [
       lat = item.get 'lat'
       lng = item.get 'lng'
       type = item.get('type').toLowerCase()
+      if item.hasAudioFile()
+        type = "#{type} audio-tour"
+
 
       if lat? and lng?
         marker = app.mapControl.addMarker(lat, lng, type).on 'click', (e) =>
