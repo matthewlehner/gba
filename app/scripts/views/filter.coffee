@@ -9,10 +9,11 @@ define [
       'click footer': 'dismiss'
 
     initialize: ->
-      $content = $('<form>')
+      $content = $("<form class='filter-form'>")
 
       for type, shown of @collection.filterTypes()
-        $content.append("<div><label for='#{type}'>#{type} <input type='checkbox' id='#{type}' name='#{type}' checked='#{shown}'/></label></div>")
+        checked = if shown then 'checked' else ''
+        $content.append("<label for='#{type}'>#{type} <input type='checkbox' id='#{type}' name='#{type}' #{checked}/></label>")
 
       @render()
       @$el.find('.content').append $content
