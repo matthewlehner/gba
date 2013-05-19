@@ -1,7 +1,8 @@
 define [
   'app'
   'views/info'
-], (app, InfoView) ->
+  'views/filter'
+], (app, InfoView, FilterView) ->
   class ControlsView extends Backbone.Layout
     template: 'map/controls'
 
@@ -36,7 +37,8 @@ define [
       app.trigger 'viewToggle'
 
     filters: (e) =>
-      alert 'filters dialogue should be triggered'
+      new FilterView
+        collection: @collection
 
     geo: (e) =>
       app.trigger 'geoLocate'
