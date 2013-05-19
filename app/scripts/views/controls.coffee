@@ -48,36 +48,16 @@ define [
       @$el.find('.geo-locate').removeClass 'active-geo'
 
     geoError: =>
-      # TODO refactor this into a helper function.
-
-      view = new InfoView
-        className: 'modal-wrapper fade'
+      new InfoView
         header: 'Location service is off'
         content: 'The Green Building App needs access to your location to find green buildings nearby. Please turn on Location Services in your device settings.'
-
-      view.render()
-
-      $('#main').append(view.$el)
-
-      setTimeout =>
-        view.$el.removeClass 'fade'
-      , 1
 
       @geoFinish()
 
     info: (e) =>
-      # TODO refactor this into a helper function.
-
-      view = new InfoView
+      new InfoView
         className: 'modal-wrapper fade'
         content: 'Info copy about GBA.'
-      view.render()
-
-      $('#main').append(view.$el)
-
-      setTimeout =>
-        view.$el.removeClass 'fade'
-      , 1
 
     searching: ->
       @$el.find('.search-label').spin('small').addClass 'active-search'

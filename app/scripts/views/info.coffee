@@ -3,16 +3,25 @@ define [
 ], (app) ->
   class InfoView extends Backbone.Layout
     template: 'info_window'
+    className: 'modal-wrapper fade'
 
     events:
       'click footer': 'dismiss'
 
-    dismiss: =>
-      @$el.addClass 'fade'
+    initialize: ->
+      @render()
+      $('#main').append(@$el)
 
       setTimeout =>
+        @$el.removeClass 'fade'
+      , 1
+
+    dismiss: =>
+      @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
         @remove()
-      , 210
+        delete this
+
+      @$el.addClass 'fade'
 
     serialize: ->
       attrs = {}
