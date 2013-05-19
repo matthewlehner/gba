@@ -49,3 +49,57 @@
     @include border-bottom-radius(2px);
   }
 }
+
+.filter-form {
+  border: 1px solid #d7d7d7;
+
+  label {
+    position: relative;
+
+    padding: 15px 8px;
+    display: block;
+    text-align: left;
+    border-top: 1px solid #d7d7d7;
+    padding-right: 44px;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  input + div {
+    display: block;
+    height: 45px;
+    width: 44px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-left: 1px solid #d7d7d7;
+    background: #f7f8f6;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      width: 44px;
+      text-align: center;
+      line-height: 16px;
+      margin-top: -8px;
+      content: 'hidden';
+    }
+  }
+
+  input:checked + div {
+    background-color: green;
+
+    &:before {
+      content: 'shown';
+    }
+  }
+}
