@@ -19,10 +19,10 @@
 }
 
 .modal {
-  background: white;
+  background: #f7f8f6;
   text-align: center;
   font-size: 0.8em;
-  border-radius: 2px;
+  border-radius: 3px;
 
   @include transition(opacity 0.2s);
   opacity: 1;
@@ -39,19 +39,24 @@
   }
 
   .content {
-    padding: 5px;
+    padding: 7px;
   }
 
   footer{ 
-    background: #CCC;
-    margin-top: 5px;
-    line-height: 44px;
-    @include border-bottom-radius(2px);
+    display: inline-block;
+    background: #FFF;
+    border: 1px solid #d7d7d7;
+    width: 80px;
+    margin: 5px;
+    margin-bottom: 11px;
+    line-height: 38px;
+    border-radius: 3px;
   }
 }
 
 .filter-form {
   border: 1px solid #d7d7d7;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.3);
 
   label {
     position: relative;
@@ -60,7 +65,7 @@
     display: block;
     text-align: left;
     border-top: 1px solid #d7d7d7;
-    padding-right: 44px;
+    padding-left: 54px;
 
     &:first-child {
       border-top: none;
@@ -79,10 +84,10 @@
     height: 45px;
     width: 44px;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
-    border-left: 1px solid #d7d7d7;
-    background: #f7f8f6;
+    border-right: 1px solid #d7d7d7;
+    background: white;
 
     &:before {
       position: absolute;
@@ -91,15 +96,15 @@
       text-align: center;
       line-height: 16px;
       margin-top: -8px;
-      content: 'hidden';
+      content: 'Hidden';
     }
   }
 
   input:checked + div {
-    background-color: green;
+    background-color: #edfbec;
 
     &:before {
-      content: 'shown';
+      content: 'Shown';
     }
   }
 }
