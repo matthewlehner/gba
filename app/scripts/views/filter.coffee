@@ -10,7 +10,6 @@ define [
       'change input': 'filterType'
 
     serialize: ->
-      'header': 'Filter Map Markers'
       'content': ' '
 
     initialize: ->
