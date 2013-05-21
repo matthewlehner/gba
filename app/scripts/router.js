@@ -21,8 +21,10 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
       var items = new ItemCollection();
 
       items.listenToOnce(app, 'locationfound', function() {
-        var latlng = '' + app.mapControl.currentLocation.lat + ',' + app.mapControl.currentLocation.lng;
-        items.fetch({data: {latlng: latlng}, reset: true});
+        items.fetch({
+          data: {latlng: app.mapControl.currentLatLng},
+          reset: true
+        });
       });
 
       app.items = items;
