@@ -17,6 +17,7 @@ define [
 
     events:
       'submit #search'     : 'search'
+      'keyup #q'           : 'showOrHideClearControl'
       'click .search-clear': 'clearSearch'
       'click .view-toggle' : 'viewToggle'
       'click .filters'     : 'filters'
@@ -34,9 +35,17 @@ define [
 
       @collection.search(params)
 
+    showOrHideClearControl: (e) =>
+      if _.isEmpty e.currentTarget.value
+        $('.search-clear').hide()
+      else
+        $('.search-clear').show()
+
     clearSearch: (e) =>
       $('#q').val('')
-      @collection.fetch()
+      @collection.fetch
+        data:
+          latlng: app.mapControl.currentLatLng
 
       if $('#main').hasClass('list')
         @viewToggle()
