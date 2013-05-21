@@ -10,19 +10,26 @@ define [
         'mapSelect selectResult' : @preview
         'open'                   : @openPanel
         'close'                  : @closePanel
+        'add'                    : @addItem
 
       @listenTo app,
         'map:Interaction' : @hidePreview
 
+    itemLayout: (item) ->
+      new Item
+        id: "item-#{item.id}"
+        className: "item"
+        model: item
+
     addItems: (collection, render) =>
       @collection.each (item) =>
-        @insertView new Item
-          id: "item-#{item.id}"
-          className: "item"
-          model: item
+        @insertView @itemLayout(item)
 
       unless render is false
         @render()
+
+    addItem: (item) =>
+      @insertView(@itemLayout item).render()
 
     preview: (item) ->
       selectedItem = @getView
