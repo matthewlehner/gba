@@ -4,13 +4,11 @@
 
 <% if (pictures.length > 0) { %>
 <section class='pictures'>
-  <% if (pictures.length > 1) { %>
-    <% _.forEach(pictures, function(picture) { %>
-      <a href="<%- picture['url'] %>" title="<%- picture['photo_credit'] %>">
-        <img src="<%- picture['thumbnail'] %>" />
-      </a>
-    <% }); %>
-  <% }; %>
+  <% _.forEach(pictures, function(picture) { %>
+    <a href="<%- picture['url'] %>" title="<%- picture['photo_credit'] %>">
+      <img src="<%- picture['thumbnail'] %>" />
+    </a>
+  <% }); %>
 </section>
 <% }; %>
 
