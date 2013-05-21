@@ -20,11 +20,31 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
     index: function() {
       var items = new ItemCollection();
 
+      items.currentlyFetching = false;
+
       items.listenToOnce(app, 'locationfound', function() {
         items.fetch({
           data: {latlng: app.mapControl.currentLatLng},
           reset: true
         });
+      });
+
+      items.listenTo(app, 'map:fetchItems', function(bounds) {
+        if (items.currentlyFetching === false) {
+          items.currentlyFetching = true;
+          items.fetch({
+            remove: false,
+            data: {
+              bounds: bounds.toBBoxString()
+            },
+            success: function (collection, response) {
+              items.currentlyFetching = false;
+            },
+            error: function (collection, response) {
+              items.currentlyFetching = false;
+            }
+          });
+        }
       });
 
       app.items = items;
