@@ -1,6 +1,7 @@
 define [
-  'app',
+  'app'
   'leaflet'
+  'leaflet.markercluster'
 ], (app, Leaflet) ->
 
   class MapControl
@@ -15,7 +16,7 @@ define [
         @mapFactory.updateCurrentLocationMarker(e)
         app.trigger 'locationfound'
 
-      @items = L.layerGroup().addTo(@map)
+      @items = new L.MarkerClusterGroup().addTo(@map)
 
     addMarker: (lat, lng, className) ->
       marker = new MapMarker(lat, lng, className)
