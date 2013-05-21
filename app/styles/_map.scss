@@ -42,6 +42,8 @@
 }
 
 @mixin icon-color($color) {
+  @extend %marker;
+
   &:before {
     background-color: $color;
     border-color: darken($color, 5%);
@@ -49,8 +51,6 @@
 }
 
 .leaflet-marker-icon {
-  @extend %marker;
-
   &.building{
     @include icon-color($building);
   }
