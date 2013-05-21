@@ -11,12 +11,14 @@ define [
     createMap: ->
       @mapFactory = new MapFactory(@el)
       @map = @mapFactory.map
-      @map.on 'locationfound', (e) =>
-        @currentLocation = e.latlng
-        @mapFactory.updateCurrentLocationMarker(e)
-        app.trigger 'locationfound'
-
+      @map.on 'locationfound', @updateCurrentLocation
       @items = new L.MarkerClusterGroup().addTo(@map)
+
+    updateCurrentLocation: (e) =>
+      @currentLocation = e.latlng
+      @currentLatLng = new LatLngString(e.latlng).string
+      @mapFactory.updateCurrentLocationMarker(e)
+      app.trigger 'locationfound'
 
     addMarker: (lat, lng, className) ->
       marker = new MapMarker(lat, lng, className)
@@ -106,5 +108,11 @@ define [
       @circle.setLatLng @latlng
       @circle.setRadius(@accuracy / 2)
       @centerpoint.setLatLng @latlng
+
+  class LatLngString
+    constructor: (latlng, precision=4) ->
+      lat = L.Util.formatNum(latlng.lat, precision)
+      lng = L.Util.formatNum(latlng.lng, precision)
+      @string = "#{lat},#{lng}"
 
   return MapControl
