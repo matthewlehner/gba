@@ -1,4 +1,6 @@
-@import 'leaflet/dist/leaflet';
+@import 'leaflet';
+@import 'markercluster';
+@import 'markercluster.default';
 
 .tiles {
   z-index: 100;
