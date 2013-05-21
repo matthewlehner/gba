@@ -12,6 +12,8 @@ define [
       @mapFactory = new MapFactory(@el)
       @map = @mapFactory.map
       @map.on 'locationfound', @updateCurrentLocation
+      @map.on 'locationfound', @setupBoundsListeners
+
       @items = new L.MarkerClusterGroup().addTo(@map)
 
     updateCurrentLocation: (e) =>
@@ -30,6 +32,19 @@ define [
 
     getDistance: (latlng) ->
       @currentLocation.distanceTo(latlng)
+
+    setupBoundsListeners: =>
+      @map.on 'zoomend moveend', @shouldFetch
+      @map.off 'locationfound', @setupBoundsListeners
+
+    shouldFetch: =>
+      willFetch = false
+
+      try
+        willFetch = !@items.getBounds().contains @map.getBounds()
+
+      if willFetch
+        app.trigger 'map:fetchItems', @map.getBounds().pad(10)
 
   class MapFactory
     constructor: (@el) ->
