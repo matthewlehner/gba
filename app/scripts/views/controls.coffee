@@ -36,13 +36,15 @@ define [
       @collection.search(params)
 
     showOrHideClearControl: (e) =>
-      if _.isEmpty e.currentTarget.value
+      if _.isEmpty $('#q').val()
         $('.search-clear').hide()
       else
         $('.search-clear').show()
 
     clearSearch: (e) =>
       $('#q').val('')
+
+      @showOrHideClearControl()
       @collection.fetch
         data:
           latlng: app.mapControl.currentLatLng
