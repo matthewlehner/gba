@@ -15,6 +15,7 @@ define [
         'reset'        : @resetMarkers
         'add'          : @addMarker
         'selectResult' : @focusMarker
+        'remove'       : @removeMarker
 
     afterRender: ->
       @mapControl = new MapControl(@el)
@@ -56,5 +57,8 @@ define [
 
     focusMarker: (item) =>
       @mapControl.map.panTo item.marker.getLatLng()
+
+    removeMarker: (item) =>
+      @mapControl.items.removeLayer(item.marker)
 
   return MapTiles
