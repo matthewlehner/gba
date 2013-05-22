@@ -66,10 +66,14 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
       }).render();
 
       app.layout.listenTo(items, 'open', function () {
-        this.$el.find('.item-container').
-          height($('#main').height()).
-        end().
-        addClass('open-item');
+        var $container = this.$el.addClass('open-item').find('.item-container');
+        var setHeight = function() {
+          $container.height($('#main').height());
+        };
+
+        setHeight();
+
+        $(window).on('resize.openitem', setHeight);
       });
 
       app.layout.listenTo(items, 'close', function() {
@@ -77,6 +81,8 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
           css('height', '').
         end().
         removeClass('open-item');
+        $(window).off('resize.openitem');
+
       });
 
       app.layout.listenTo(app, 'viewToggle', function() {

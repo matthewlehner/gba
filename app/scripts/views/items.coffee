@@ -49,11 +49,11 @@ define [
       @$el.css 'top', window.innerHeight + 5
       $(@currentView.model.marker._icon).removeClass 'active'
       @currentView = null
+      $(window).off 'resize.preview', @setPreviewHeight
 
     showPreview: ->
-      @previewHeight = window.innerHeight - @currentView.$el.innerHeight()
       $(@currentView.model.marker._icon).addClass 'active'
-      @$el.css 'top', @previewHeight
+      $(window).on 'resize.preview', @setPreviewHeight
 
       @currentView.$el
         .siblings()
@@ -62,11 +62,19 @@ define [
         .addClass('current')
         .find('.lazy').trigger 'appear'
 
+      @setPreviewHeight()
+
+    setPreviewHeight: =>
+      @previewHeight = window.innerHeight - @currentView.$el.find('header').innerHeight()
+      @$el.css 'top', @previewHeight
+
     openPanel: ->
+      $(window).off 'resize.preview', @setPreviewHeight
       @$el.css 'top', '0'
 
     closePanel: ->
-      @$el.css 'top', @previewHeight
+      @setPreviewHeight()
+      $(window).on 'resize.preview', @setPreviewHeight
 
   class Item extends Backbone.Layout
     template: 'item'
@@ -88,22 +96,28 @@ define [
     openItem: (event) =>
       return if @openView?
 
+      event.stopImmediatePropagation()
+
       @openView = @insertView(new ItemDetails
         model: @model
         tagName: 'article'
       ).render().view
+
       @model.trigger 'open', @model
       @$el.addClass 'current'
-      @openView.$el.height(
-        $('#main').height() - @$el.find('header').innerHeight()
-      )
+      @setHeight()
+      $(window).on 'resize.itemdetails', @setHeight
 
-      event.stopImmediatePropagation()
+    setHeight: ->
+      @openView.$el.height(
+        $('#main').height() - @$el.find('header').innerHeight() - 10 # for pad
+      )
 
     closeItem: (event) =>
       return unless @openView?
 
       @model.trigger 'close', @model
+      $(window).off 'resize.itemdetails'
       @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
         @removeView @openView
         @openView = null
