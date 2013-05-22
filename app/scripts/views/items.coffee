@@ -1,7 +1,6 @@
 define [
   'app'
   'views/photo_gallery'
-  'lib/jquery.touchtouch'
 ], (app, PhotoGallery) ->
 
   class ItemsPanel extends Backbone.Layout
