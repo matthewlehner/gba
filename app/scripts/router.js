@@ -88,7 +88,12 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
           this.insertView(this.resultsView).render();
         }
 
-        $('.results').height(window.innerHeight - 55);
+        var setHeight = function () {
+          $('.results').height(window.innerHeight - 55);
+        };
+
+        $(window).on('resize', setHeight);
+
         this.$el.toggleClass('map list');
       });
     }
