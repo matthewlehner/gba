@@ -1,7 +1,8 @@
 define [
-  'app',
+  'app'
+  'views/photo_gallery'
   'lib/jquery.touchtouch'
-], (app) ->
+], (app, PhotoGallery) ->
 
   class ItemsPanel extends Backbone.Layout
     initialize: ->
@@ -125,8 +126,11 @@ define [
       @listenTo @model, 'change', @render
       @on 'afterRender', @initImageBrowser
 
+    cleanup: ->
+      @gallery.remove()
+
     initImageBrowser: (e) ->
-      @$el.find('.pictures a').touchTouch()
+      @gallery = new PhotoGallery(@$el.find('.pictures a'))
 
     serialize: ->
       @model.toJSON()
