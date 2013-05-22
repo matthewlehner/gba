@@ -109,7 +109,7 @@ define [
       @setHeight()
       $(window).on 'resize.itemdetails', @setHeight
 
-    setHeight: ->
+    setHeight: =>
       @openView.$el.height(
         $('#main').height() - @$el.find('header').innerHeight() - 10 # for pad
       )
