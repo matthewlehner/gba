@@ -1,6 +1,6 @@
 define [
   'app'
-  'views/photo_gallery'
+  'lib/photo_gallery'
 ], (app, PhotoGallery) ->
 
   class ItemsPanel extends Backbone.Layout
