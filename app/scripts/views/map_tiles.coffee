@@ -12,6 +12,7 @@ define [
         className: 'map-marker'
 
       @listenTo @collection,
+        'refilter'     : @resetMarkers
         'reset'        : @resetMarkers
         'add'          : @addMarker
         'selectResult' : @focusMarker
@@ -26,7 +27,7 @@ define [
       @addMarkers()
 
     addMarkers: ->
-      @collection.each (item) =>
+      @collection.filteredModels().each (item) =>
         @addMarker(item)
 
       @collection.trigger 'markersAdded'
@@ -34,6 +35,8 @@ define [
       return this
 
     addMarker: (item) ->
+      return unless _.contains @collection.filteredModels().value(), item
+
       lat = item.get 'lat'
       lng = item.get 'lng'
 
