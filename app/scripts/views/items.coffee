@@ -48,7 +48,7 @@ define [
 
     hidePreview: ->
       return unless @currentView?
-      @$el.css 'top', window.innerHeight + 5
+      @$el.css 'top', ''
       $(@currentView.model.marker._icon).removeClass 'active'
       @currentView = null
       $(window).off 'resize.preview', @setPreviewHeight
