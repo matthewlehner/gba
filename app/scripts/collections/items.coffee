@@ -7,8 +7,8 @@ define [
     model: ItemModel
 
     initialize: ->
-      @on 'reset', ->
-        delete @typesFilter
+      @on 'reset', =>
+        @typesFilter = null
 
     search: (params) ->
       @fetch
@@ -32,11 +32,33 @@ define [
       @typesFilter
 
     _getTypes: ->
-      types = {'Buildings with audio': true}
+      types = {'Show only buildings with audio': false}
 
       for type in _.uniq @pluck('type')
         types[type] = true
 
       types
+
+    typesFiltered: ->
+      _.chain(@filterTypes())
+      .map (type, value) ->
+        return value ? type : null
+      .without('Show only buildings with audio')
+      .compact()
+      .value()
+
+    filteredModels: ->
+      models = _.chain(@models)
+
+      if @filterTypes()['Show only buildings with audio'] is true
+        models = models.filter (item) ->
+          return (item.get('audio_count') > 0)
+
+      typesFiltered = @typesFiltered()
+      if typesFiltered.length > 0
+        models = models.filter (item) ->
+          return _.include typesFiltered, item.get('type')
+
+      models
 
   return ItemCollection
