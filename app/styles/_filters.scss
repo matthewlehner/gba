@@ -23,7 +23,8 @@
     top: 0;
   }
 
-  input + div {
+
+  .checkbox-indicator {
     display: block;
     height: 45px;
     width: 44px;
@@ -31,6 +32,9 @@
     left: 0;
     top: 0;
     border-right: 1px solid #d7d7d7;
+  }
+
+  input ~ .checkbox-indicator {
     background: white;
 
     &:before {
@@ -40,15 +44,15 @@
       text-align: center;
       line-height: 16px;
       margin-top: -8px;
-      content: 'Hidden';
+      content: 'no';
     }
   }
 
-  input:checked + div {
+  input:checked ~ .checkbox-indicator {
     background-color: #edfbec;
 
     &:before {
-      content: 'Shown';
+      content: 'yes';
     }
   }
 }
