@@ -7,6 +7,8 @@ define [
     initialize: ->
       @setDistance()
       @on 'addMarker', @hasMarker
+      @on 'change', @saveLocal
+      @on 'fetch', @loadLocal
 
     hasMarker: (marker) =>
       @marker = marker
