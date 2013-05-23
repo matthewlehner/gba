@@ -14,7 +14,9 @@ define [
       @map.on 'locationfound', @updateCurrentLocation
       @map.on 'locationfound', @setupBoundsListeners
 
-      @items = new L.MarkerClusterGroup().addTo(@map)
+      @items = new L.MarkerClusterGroup
+        showCoverageOnHover: false
+      .addTo(@map)
 
     updateCurrentLocation: (e) =>
       @currentLocation = e.latlng
