@@ -20,7 +20,6 @@ define [
           if $('#main').hasClass 'map'
             app.trigger 'viewToggle'
 
-
       @trigger 'searching'
 
     url: '/items'
@@ -39,6 +38,5 @@ define [
         types[type] = true
 
       types
-
 
   return ItemCollection
