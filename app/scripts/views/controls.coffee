@@ -76,7 +76,7 @@ define [
     info: (e) =>
       new InfoView
         className: 'modal-wrapper fade'
-        content: 'Info copy about GBA.'
+        content: 'A project of the Open Green Building Society with support from the City of Vancouver, the Canada and Cascadia Green Building Councils.'
 
     searching: ->
       @$el.find('.search-label').spin('small').addClass 'active-search'
