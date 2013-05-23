@@ -8,7 +8,7 @@ define [
       @setDistance()
       @on 'addMarker', @hasMarker
       @on 'change', @saveLocal
-      @on 'fetch', @loadLocal
+      @on 'fetching', @loadLocal
 
     hasMarker: (marker) =>
       @marker = marker
@@ -36,11 +36,12 @@ define [
       result = localStorage["item-#{@id}"]
 
       if result?
-        @set localStorage["item-#{@id}"],
+        @set JSON.parse(result),
           silent: true
 
     saveLocal: ->
-      localStorage["item-#{@id}"] = @toJSON()
+      result = JSON.stringify(@toJSON())
+      localStorage["item-#{@id}"] = result
 
     fetched: ->
       _.chain(@attributes)
