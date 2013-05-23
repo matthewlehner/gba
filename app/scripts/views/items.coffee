@@ -66,7 +66,8 @@ define [
       @setPreviewHeight()
 
     setPreviewHeight: =>
-      @previewHeight = window.innerHeight - @currentView.$el.find('header').innerHeight()
+      @headerHeight ?= @currentView.$el.find('header').innerHeight()
+      @previewHeight = window.innerHeight - @headerHeight
       @$el.css 'top', @previewHeight
 
     openPanel: ->
