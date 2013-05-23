@@ -17,7 +17,7 @@ define [
 
       for type, shown of @collection.filterTypes()
         checked = if shown then 'checked' else ''
-        $content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div></div></label>"
+        $content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div class='checkbox-indicator'></div></label>"
 
       @render()
       @$el.find('.content').append $content
@@ -28,10 +28,11 @@ define [
         @$el.removeClass 'fade'
       , 1
 
-    dismiss: =>
+    dismiss: ->
       @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
         @remove()
         delete this
+        @collection.trigger 'refilter'
 
       @$el.addClass 'fade'
 
@@ -39,11 +40,6 @@ define [
       $checkbox = $(e.target)
       type = $checkbox.attr('id')
       @collection.typesFilter[type] = $checkbox.prop('checked')
-
-      if type is "Buildings with audio"
-        $('.audio-tour').toggle()
-      else
-        $(".#{type.toLowerCase()}").toggle()
 
   return FilterView
 
