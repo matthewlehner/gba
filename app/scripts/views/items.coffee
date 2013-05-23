@@ -42,8 +42,9 @@ define [
           $(@currentView.model.marker._icon).removeClass 'active'
 
         @currentView = selectedItem
-        item.fetch();
-        @showPreview();
+        item.fetch()
+        item.trigger 'fetching'
+        @showPreview()
 
     hidePreview: ->
       return unless @currentView?
