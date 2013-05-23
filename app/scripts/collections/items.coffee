@@ -10,6 +10,9 @@ define [
       @on 'reset', =>
         @typesFilter = null
 
+      @on 'refilter', =>
+        @cachedModels = null
+
     search: (params) ->
       @fetch
         data: params
@@ -41,13 +44,22 @@ define [
 
     typesFiltered: ->
       _.chain(@filterTypes())
-      .map (type, value) ->
-        return value ? type : null
+      .map (num, key) ->
+        if num is false
+          return key
+        else
+          return null
       .without('Show only buildings with audio')
       .compact()
       .value()
 
     filteredModels: ->
+      if @cachedModels?
+        @cachedModels
+      else
+        @performFilter()
+
+    performFilter: ->
       models = _.chain(@models)
 
       if @filterTypes()['Show only buildings with audio'] is true
@@ -57,8 +69,8 @@ define [
       typesFiltered = @typesFiltered()
       if typesFiltered.length > 0
         models = models.filter (item) ->
-          return _.include typesFiltered, item.get('type')
+          return !_.contains(typesFiltered, item.get('type'))
 
-      models
+      @cachedModels = models
 
   return ItemCollection
