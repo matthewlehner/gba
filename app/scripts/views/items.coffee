@@ -140,14 +140,22 @@ define [
     initialize: ->
       @listenTo @model, 'change', @render
       @on 'afterRender', @initImageBrowser
+      @on 'afterRender', @spin
 
-    cleanup: ->
-      @gallery.remove()
+    spin: ->
+      unless @model.fetched()
+        @$el.spin
+          hwaccel: true
+          top: '50%'
 
     initImageBrowser: (e) ->
-      @gallery = new PhotoGallery(@$el.find('.pictures a'))
+      if @model.get('pictures')?
+        @gallery = new PhotoGallery(@$el.find('.pictures a'))
 
     serialize: ->
       @model.toJSON()
+
+    cleanup: ->
+      @gallery?.remove()
 
   return ItemsPanel

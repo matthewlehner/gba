@@ -30,4 +30,23 @@ define [
     hasAudioFile: ->
       @get('audio_count') > 0
 
+    loadLocal: ->
+      result = localStorage["item-#{@id}"]
+
+      if result?
+        @set localStorage["item-#{@id}"],
+          silent: true
+
+    saveLocal: ->
+      localStorage["item-#{@id}"] = @toJSON()
+
+    fetched: ->
+      _.chain(@attributes)
+      .keys()
+      .intersection(['address', 'city', 'country', 'description', 'summary', 'audio_files', 'pictures'])
+      .value()
+      .length > 0
+
+
+
   return ItemModel
