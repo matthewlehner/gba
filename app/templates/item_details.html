@@ -1,3 +1,7 @@
+<% if (!((typeof audio_files !== "undefined" && audio_files !== null) || (typeof pictures !== "undefined" && pictures !== null) || (typeof description !== "undefined" && description !== null) || (typeof summary !== "undefined" && summary !== null))) { %>
+  <% return true; %>
+<% }; %>
+
 <% if ( audio_count > 0 ) { %>
   <section class='audio'>
     <% _.forEach(audio_files, function(audio_file) { %>
