@@ -171,7 +171,7 @@
 
 .open-item {
   .controls {
-    top: -150px;
+    top: -200px;
     @include transition(top 0.2s $ease-out-quart);
   }
 }
