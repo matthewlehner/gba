@@ -28,6 +28,11 @@ define [
       else
         @set 'human_distance', 'No Geolocation'
 
+    mapMarkerClass: ->
+      if @hasAudioFile()
+        "audio-tour"
+      else
+        @get('filter').toLowerCase().replace(/\ /, '-')
 
     hasAudioFile: ->
       @get('audio_count') > 0

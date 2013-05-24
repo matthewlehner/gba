@@ -40,14 +40,8 @@ define [
       lat = item.get 'lat'
       lng = item.get 'lng'
 
-      if item.hasAudioFile()
-        className = "audio-tour"
-      else
-        className = item.get('type').toLowerCase()
-
-
       if lat? and lng?
-        marker = @mapControl.addMarker(lat, lng, className).on 'click', (e) =>
+        marker = @mapControl.addMarker(lat, lng, item.mapMarkerClass()).on 'click', (e) =>
           @clickMarker(e, item)
 
         # let the model know that it has a marker.
