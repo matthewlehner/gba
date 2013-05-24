@@ -37,7 +37,7 @@ define [
     _getTypes: ->
       types = {'Show only buildings with audio': false}
 
-      for type in _.uniq @pluck('type')
+      for type in _.uniq @pluck('filter')
         types[type] = true
 
       types
@@ -69,7 +69,7 @@ define [
       typesFiltered = @typesFiltered()
       if typesFiltered.length > 0
         models = models.filter (item) ->
-          return !_.contains(typesFiltered, item.get('type'))
+          return !_.contains(typesFiltered, item.get('filter'))
 
       @cachedModels = models
 
