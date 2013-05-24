@@ -25,7 +25,7 @@ define [
 
       @trigger 'searching'
 
-    url: 'http://gbbdev.herokuapp.com/api/v1/items'
+    url: 'http://greenbuildingbrain.org/api/v1/items'
 
     comparator: (item) ->
       item.get 'distance'
