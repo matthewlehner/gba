@@ -10,7 +10,7 @@ define [
       @prevScrollY = 0
 
       @listenTo @collection,
-        'searchSuccessful' : @resetResults
+        'searchSuccessful reset' : @resetResults
 
       @on 'afterRender', @addResults
 
