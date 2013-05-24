@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "requirejs"               : "~2.1.4",
+    "requirejs-domready"      : "~2.0.1",
     "jquery"                  : "~2.0.0",
     "lodash"                  : "*",
     "backbone"                : "~1.0.0",

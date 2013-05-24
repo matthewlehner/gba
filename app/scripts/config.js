@@ -14,7 +14,8 @@ require.config({
     'FastClick'              : '../components/fastclick/lib/fastclick',
     'spin'                   : '../components/spin.js/spin',
     'jquery.spinner'         : '../components/spin.js/jquery.spin',
-    'jquery.lazyload'        : '../components/jquery.lazyload/jquery.lazyload'
+    'jquery.lazyload'        : '../components/jquery.lazyload/jquery.lazyload',
+    'domReady'               : '../components/requirejs-domready/domready'
   },
 
   map: {
