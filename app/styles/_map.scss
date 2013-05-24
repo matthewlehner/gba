@@ -51,28 +51,20 @@
 }
 
 .leaflet-marker-icon {
-  &.building{
+  &.leed-certified {
+    @include icon-color($program);
+  }
+
+  &.leed-registered {
+    @include icon-color($building);
+  }
+
+  &.other{
     @include icon-color($building);
   }
 
   &.company {
     @include icon-color($company);
-  }
-
-  &.openspace {
-    @include icon-color($openspace);
-  }
-
-  &.program {
-    @include icon-color($program);
-  }
-
-  &.infrastructure {
-    @include icon-color($infrastructure);
-  }
-
-  &.neighbourhood {
-    @include icon-color($neighbourhood);
   }
 
   &.audio-tour {
