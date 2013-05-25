@@ -52,7 +52,7 @@
 
 .leaflet-marker-icon {
   &.leed-certified {
-    @include icon-color($program);
+    @include icon-color($building);
   }
 
   &.leed-registered {
@@ -63,7 +63,7 @@
     @include icon-color($building);
   }
 
-  &.company {
+  &.companies {
     @include icon-color($company);
   }
 
