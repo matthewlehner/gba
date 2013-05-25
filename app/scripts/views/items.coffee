@@ -95,6 +95,12 @@ define [
     imageLazyLoader: =>
       @$el.find('.lazy').lazyload
         effect: 'fadeIn'
+        container: @$el
+      .removeClass 'lazy'
+
+      setTimeout =>
+        @$el.trigger 'scroll'
+      , 1
 
     openItem: (event) =>
       return if @openView?
