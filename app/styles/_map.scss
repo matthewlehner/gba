@@ -51,20 +51,48 @@
 }
 
 .leaflet-marker-icon {
-  &.leed-certified {
-    @include icon-color($program);
+
+  &.companies {
+    @include icon-color($companies);
+  }
+  
+  &.building{
+    @include icon-color($building-registered);
+  }
+  &.other {
+    @include icon-color($building-registered);
   }
 
   &.leed-registered {
-    @include icon-color($building);
+    @include icon-color($building-registered);
   }
 
-  &.other{
-    @include icon-color($building);
+  &.leed-certified {
+    @include icon-color($building-certified);
   }
 
-  &.company {
-    @include icon-color($company);
+  &.boma-best-registered {
+    @include icon-color($building-registered);
+  }
+
+  &.boma-best-certified {
+    @include icon-color($building-certified);
+  }
+
+  &.passive-house-reg {
+    @include icon-color($building-registered);
+  }
+
+  &.passive-house-cert {
+    @include icon-color($building-certified);
+  }
+
+  &.living-building-reg {
+    @include icon-color($building-registered);
+  }
+
+  &.living-building-cert {
+    @include icon-color($building-certified);
   }
 
   &.audio-tour {
