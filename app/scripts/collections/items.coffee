@@ -9,6 +9,7 @@ define [
     initialize: ->
       @on 'reset', =>
         @typesFilter = null
+        @cachedModels = null
 
       @on 'refilter', =>
         @cachedModels = null
