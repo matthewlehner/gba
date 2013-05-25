@@ -121,6 +121,9 @@
       path {
         fill: rgba(0,0,0,0);
       }
+      polygon {
+        fill: rgba(0,0,0,0);        
+      }
     }
   }
 
@@ -185,6 +188,9 @@
   .map {
     path {
       fill: #808080;
+    }
+    polygon {
+      fill: #808080;      
     }
   }
 
