@@ -14,7 +14,9 @@ define [
       @map.on 'locationfound', @updateCurrentLocation
       @map.on 'locationfound', @setupBoundsListeners
 
-      @items = new L.MarkerClusterGroup
+      @items = []
+
+      @markerClusterer = new L.MarkerClusterGroup
         showCoverageOnHover: false
       .addTo(@map)
 
@@ -24,13 +26,21 @@ define [
       @mapFactory.updateCurrentLocationMarker(e)
       app.trigger 'locationfound'
 
-    addMarker: (lat, lng, className) ->
-      marker = new MapMarker(lat, lng, className)
-      @items.addLayer marker
+    createMarker: (attrs) ->
+      marker = new MapMarker(attrs.lat, attrs.lng, attrs.className)
+      @items.push marker
       marker
 
+    addMarker: ->
+      marker = @createMarker(lat, lng, className)
+      @markerClusterer.addLayer marker
+
+    renderMarkers: ->
+      @markerClusterer.addLayers(@items)
+
     clearMarkers: ->
-      @items.clearLayers()
+      @items = []
+      @markerClusterer.clearLayers()
 
     getDistance: (latlng) ->
       @currentLocation.distanceTo(latlng)
@@ -43,7 +53,7 @@ define [
       willFetch = false
 
       try
-        willFetch = !@items.getBounds().contains @map.getBounds()
+        willFetch = !@markerClusterer.getBounds().contains @map.getBounds()
 
       if willFetch
         app.trigger 'map:fetchItems', @map.getBounds().pad(10)
