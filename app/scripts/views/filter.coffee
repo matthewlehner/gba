@@ -7,7 +7,7 @@ define [
 
     events:
       'click footer': 'dismiss'
-      'change input': 'filterType'
+      'click li': 'filterType'
 
     serialize: ->
       'content': ' '
@@ -31,10 +31,11 @@ define [
       @$content = $("<ul class='filter-form'>")
 
       for type, shown of @collection.filterTypes()
-        @$content.append @templateEl(type, shown)
+        checked = if shown then 'checked' else ''
+        @$content.append @templateEl(type, checked)
 
-    templateEl: (type, selected) ->
-      "<li class='filter-type' data-type='#{type}' data-selected='#{selected}'>#{type}</label>"
+    templateEl: (type, checked) ->
+      "<li class='filter-type #{checked}' data-type='#{type}'>#{type}</label>"
 
     dismiss: ->
       @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
@@ -45,9 +46,10 @@ define [
       @$el.addClass 'fade'
 
     filterType: (e) ->
-      $checkbox = $(e.target)
-      type = $checkbox.attr('id')
-      @collection.typesFilter[type] = $checkbox.prop('checked')
+      $li = $(e.target)
+      $li.toggleClass('checked')
+      type = $li.data('type')
+      @collection.typesFilter[type] = $li.hasClass('checked')
 
   return FilterView
 
