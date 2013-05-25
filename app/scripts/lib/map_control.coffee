@@ -19,7 +19,7 @@ define [
 
       @markerClusterer = new L.MarkerClusterGroup
         showCoverageOnHover: false
-        maxClusterRadius: 20
+        maxClusterRadius: 34
       .addTo(@map)
 
     updateCurrentLocation: (e) =>
