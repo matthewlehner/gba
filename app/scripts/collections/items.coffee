@@ -36,12 +36,13 @@ define [
       @typesFilter
 
     _getTypes: ->
-      types = {'Show only buildings with audio': false}
+      filters = {'Show only buildings with audio': false}
 
-      for type in _.uniq @pluck('filter')
-        types[type] = true
+      filterTypes = _.chain(@pluck('filter')).uniq().sort().value()
+      for filter in filterTypes
+        filters[filter] = true
 
-      types
+      filters
 
     typesFiltered: ->
       _.chain(@filterTypes())
