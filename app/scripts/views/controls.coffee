@@ -55,6 +55,8 @@ define [
         @viewToggle()
 
     viewToggle: (e) =>
+      if app.searchMode is true
+        app.trigger 'map:fitmarkers'
       app.trigger 'viewToggle'
 
     filters: (e) =>

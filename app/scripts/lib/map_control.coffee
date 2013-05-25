@@ -13,6 +13,7 @@ define [
       @map = @mapFactory.map
       @map.on 'locationfound', @updateCurrentLocation
       @map.on 'locationfound', @setupBoundsListeners
+      app.on 'map:fitmarkers', @fitBounds
 
       @items = []
 
@@ -58,6 +59,9 @@ define [
 
       if willFetch
         app.trigger 'map:fetchItems', @map.getBounds().pad(10)
+
+    fitBounds: =>
+      @map.fitBounds @markerClusterer.getBounds()
 
   class MapFactory
     constructor: (@el) ->
