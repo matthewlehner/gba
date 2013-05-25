@@ -23,9 +23,9 @@
 <% if (pictures.length > 0) { %>
 <section class='pictures'>
   <% _.forEach(pictures, function(picture) { %>
-    <a href="<%- picture['url'] %>" title="<%- picture['photo_credit'] %>">
+    <span data-src="<%- picture['url'] %>" title="<%- picture['photo_credit'] %>">
       <img src="<%- picture['thumbnail'] %>" />
-    </a>
+    </span>
   <% }); %>
 </section>
 <% }; %>

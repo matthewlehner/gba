@@ -162,7 +162,7 @@ define [
 
     initImageBrowser: (e) ->
       if @model.get('pictures')?
-        @gallery = new PhotoGallery(@$el.find('.pictures a'))
+        @gallery = new PhotoGallery(@$el.find('.pictures span'))
 
     serialize: ->
       @model.toJSON()
