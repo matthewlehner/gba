@@ -14,7 +14,7 @@
   <author href="http://greenbuildingapp.com" email="info@opengreenbuilding.org">
     Matthew Lehner - developer
     Andrew Reynolds - designer
-  </author> 
+  </author>
 
   <!--
     Enable individual API permissions by defining each here.
@@ -54,30 +54,45 @@
 
   <!-- Define app icon for each platform. -->
   <icon src="icon.png" />
+
+  <!-- iOS -->
+  <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57"  height="57" />
+  <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+  <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72"  height="72" />
+  <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+
+  <!-- Android -->
   <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
   <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
   <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
   <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
-  <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
-  <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
 
   <!-- Define app splash screen for each platform. -->
+  <gap:splash src="splash.png" />
+
+  <!-- iOS -->
+  <gap:splash src="res/screen/ios/default.png"              gap:platform ="ios" width="320" height="480" />
+  <gap:splash src="res/screen/ios/default-2x.png"           gap:platform ="ios" width="640" height="960" />
+  <gap:splash src="res/screen/ios/default-iphone5.png"      gap:platform ="ios" width="640" height="1136" />
+  <gap:splash src="res/screen/ios/default-landscape.png"    gap:platform ="ios" width="1024" height="768" />
+  <gap:splash src="res/screen/ios/default-portrait.png"     gap:platform ="ios" width="768" height="1024" />
+  <gap:splash src="res/screen/ios/default-landscape-2x.png" gap:platform ="ios" width="2048" height="1496" />
+  <gap:splash src="res/screen/ios/default-portrait-2x.png"  gap:platform ="ios" width="1536" height="2008" />
+
+  <!-- Android -->
   <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
   <gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
   <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
   <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
-  <gap:splash src="res/screen/ios/screen-iphone-portrait.png"    gap:platform="ios"     width="320" height="480" />
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
-  <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
-  <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
 
-    <!--
-        Define access to external domains.
 
-        <access />            - a blank access tag denies access to all external resources.
-        <access origin="*" /> - a wildcard access tag allows access to all external resource.
+  <!--
+    Define access external domains.
 
-        Otherwise, you can specify specific domains:
-    -->
-    <access origin="*"/>
+    <access />            - a blank access tag denies access to all external resources.
+    <access origin="*" /> - a wildcard access tag allows access to all external resource.
+
+    Otherwise, you can specify specific domains:
+  -->
+  <access origin="*"/>
 </widget>
