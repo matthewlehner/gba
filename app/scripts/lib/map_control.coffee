@@ -51,6 +51,7 @@ define [
 
     shouldFetch: =>
       willFetch = false
+      return if app.searchMode is true
 
       try
         willFetch = !@markerClusterer.getBounds().contains @map.getBounds()

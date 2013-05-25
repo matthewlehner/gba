@@ -27,6 +27,7 @@ define [
     search: (e) =>
       e.preventDefault()
       e.stopImmediatePropagation()
+      app.searchMode = true
       params = $(e.target)
         .find('input[name=q]')
           .blur()
@@ -49,6 +50,7 @@ define [
         data:
           latlng: app.mapControl.currentLatLng
 
+      app.searchMode = false
       if $('#main').hasClass('list')
         @viewToggle()
 
