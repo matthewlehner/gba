@@ -109,12 +109,12 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding: 5px;
-  color: #898989;
+  color: #666;
   text-shadow: 0 0 1px rgba(255,255,255,1);
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    color: #808080;
+    color: #555;
     text-shadow: 0 0 1px rgba(255,255,255,1);
   }
 
@@ -136,7 +136,7 @@
   }
 
   article {
-    font-size: em(12);
+    font-size: em(14);
 
     h1 {
       font-size: 1.4em;
