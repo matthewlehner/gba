@@ -79,7 +79,6 @@ define [
 
     info: (e) =>
       new InfoView
-        className: 'modal-wrapper fade'
         content: 'A project of the Open Green Building Society with support from the City of Vancouver, the Canada and Cascadia Green Building Councils.'
 
     searching: ->
@@ -87,5 +86,11 @@ define [
 
     searchSuccess: ->
       @$el.find('.search-label').spin(false).removeClass 'active-search'
+      if @collection.length is 0
+        @searchNoResults()
+
+    searchNoResults: ->
+      new InfoView
+        content: "Your search for '#{$('#q').val()}' hasn't returned any results."
 
   return ControlsView
