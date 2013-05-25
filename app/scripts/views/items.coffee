@@ -90,6 +90,12 @@ define [
       @listenTo @model,
         'change:distance', @changeDistance
 
+      @on 'afterRender', @imageLazyLoader
+
+    imageLazyLoader: =>
+      @$el.find('.lazy').lazyload
+        effect: 'fadeIn'
+
     openItem: (event) =>
       return if @openView?
 

@@ -4,10 +4,9 @@
     <figure class='featured-image'>
       <img
       <% if (typeof featured_image !== "undefined" && featured_image !== null) { %>
-        src=<%- featured_image %>
-      <% } else { %>
-        src='images/logo-thumb.svg'
+        data-original=<%- featured_image %> class='lazy'
       <% }; %>
+        src='images/logo-thumb.svg'
         width='36' height='36'
       />
     </figure>
