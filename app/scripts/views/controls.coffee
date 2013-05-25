@@ -79,7 +79,8 @@ define [
 
     info: (e) =>
       new InfoView
-        content: 'A project of the Open Green Building Society with support from the City of Vancouver, the Canada and Cascadia Green Building Councils.'
+        className: 'modal-wrapper fade'
+        content: "<p>A project of the <a href='http://opengreenbuilding.org/'>Open Green Building Society</a> with support from the <a hrev='http://vancouver.ca/green-vancouver/a-bright-green-future.aspx'>City of Vancouver</a>, the Canada and Cascadia Green Building Councils.</p>\n<p>For more information on the app, please visit <a href='http://greenbuildingapp.com/'>greenbuildingapp.com</a>.</p>\n<p>Data is loaded from the <a href='http://greenbuildignbrain.org/'>Green Building Brain</a>, please submit fixes and ehancements there.</p>\n<p>Audio Tours provided by <a href='http://greenbuildingaudiotours.com'>Green Building Audio Tours</a>. Get an audio tour for your building today!</p>"
 
     searching: ->
       @$el.find('.search-label').spin('small').addClass 'active-search'
