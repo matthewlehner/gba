@@ -6,11 +6,9 @@ define [
   class ItemsPanel extends Backbone.Layout
     initialize: ->
       @listenTo @collection,
-        'markersAdded'           : @addItems
         'mapSelect selectResult' : @preview
         'open'                   : @openPanel
         'close'                  : @closePanel
-        'add'                    : @addItem
 
       @listenTo app,
         'map:Interaction' : @hidePreview
@@ -22,49 +20,51 @@ define [
         model: item
 
     addItems: (collection, render) =>
-      @collection.each (item) =>
-        @insertView @itemLayout(item)
+      # @collection.each (item) =>
+      #   @insertView @itemLayout(item)
 
       unless render is false
         @render()
 
-    addItem: (item) =>
-      @insertView(@itemLayout item).render()
+    addItem: (item) ->
+      @insertView(@itemLayout item)
 
     preview: (item) ->
       selectedItem = @getView
         model: item
 
-      if @currentView is selectedItem
+      if @selectedModel is item
         @hidePreview();
       else
         if @currentView
-          $(@currentView.model.marker._icon).removeClass 'active'
+          oldView = @currentView
+          $(oldView.model?.marker?._icon).removeClass 'active'
 
-        @currentView = selectedItem
+        else
+          $(window).on 'resize.preview', @setPreviewHeight
+
+        @currentView = @addItem(item)
         item.fetch()
         item.trigger 'fetching'
-        @showPreview()
+        @showPreview(oldView)
 
     hidePreview: ->
       return unless @currentView?
       @$el.css 'top', ''
       $(@currentView.model.marker._icon).removeClass 'active'
+      @currentView.remove()
       @currentView = null
       $(window).off 'resize.preview', @setPreviewHeight
 
-    showPreview: ->
-      $(@currentView.model.marker._icon).addClass 'active'
-      $(window).on 'resize.preview', @setPreviewHeight
+    showPreview: (oldView) ->
+      @currentView.render().then =>
+        $(@currentView.model.marker._icon).addClass 'active'
 
-      @currentView.$el
-        .siblings()
-          .removeClass('current')
-        .end()
-        .addClass('current')
-        .find('.lazy').trigger 'appear'
+        @currentView.$el.addClass('current')
 
-      @setPreviewHeight()
+        oldView?.$el.removeClass('current')
+        oldView?.remove()
+        @setPreviewHeight()
 
     setPreviewHeight: =>
       @headerHeight ?= @currentView.$el.find('header').innerHeight()
