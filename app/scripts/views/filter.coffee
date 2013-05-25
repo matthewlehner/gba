@@ -13,20 +13,26 @@ define [
       'content': ' '
 
     initialize: ->
-      $content = $("<form class='filter-form'>")
-
-      for type, shown of @collection.filterTypes()
-        checked = if shown then 'checked' else ''
-        $content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div class='checkbox-indicator'></div></label>"
-
+      @listenTo @collection, 'reset', @render
+      @on 'beforeRender', @createTemplate
+      @on 'afterRender', @addToDom
       @render()
-      @$el.find('.content').append $content
+
+    addToDom: ->
+      @$el.find('.content').append @$content
 
       $('#main').append(@$el)
 
       setTimeout =>
         @$el.removeClass 'fade'
       , 1
+
+    createTemplate: ->
+      @$content = $("<form class='filter-form'>")
+
+      for type, shown of @collection.filterTypes()
+        checked = if shown then 'checked' else ''
+        @$content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div class='checkbox-indicator'></div></label>"
 
     dismiss: ->
       @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
