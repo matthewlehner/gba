@@ -87,3 +87,27 @@
   @extend %marker;
   @include icon-color($currentLocation);
 }
+
+// replace default colors for clusters from markerclusterer.default.scss
+
+.marker-cluster-small {
+	background-color: rgba(43, 145, 69, 0.6);
+	}
+.marker-cluster-small div {
+	background-color: rgba(213, 231, 178, 0.8);
+	}
+
+.marker-cluster-medium {
+	background-color: rgba(43, 145, 69, 0.6);
+	}
+.marker-cluster-medium div {
+	background-color: rgba(213, 231, 178, 0.8);
+	}
+
+.marker-cluster-large {
+	background-color: rgba(43, 145, 69, 0.6);
+	}
+.marker-cluster-large div {
+	background-color: rgba(213, 231, 178, 0.8);
+	}
+
