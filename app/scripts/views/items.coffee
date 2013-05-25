@@ -30,9 +30,6 @@ define [
       @insertView(@itemLayout item)
 
     preview: (item) ->
-      selectedItem = @getView
-        model: item
-
       if @selectedModel is item
         @hidePreview();
       else
@@ -41,7 +38,10 @@ define [
           $(oldView.model?.marker?._icon).removeClass 'active'
 
         else
+          @$el.css 'top', (window.innerHeight + 5)
           $(window).on 'resize.preview', @setPreviewHeight
+
+        @selectedModel = item
 
         @currentView = @addItem(item)
         item.fetch()
@@ -50,10 +50,11 @@ define [
 
     hidePreview: ->
       return unless @currentView?
-      @$el.css 'top', ''
+      @$el.css 'top', (window.innerHeight + 5)
       $(@currentView.model.marker._icon).removeClass 'active'
       @currentView.remove()
       @currentView = null
+      @selectedModel = null
       $(window).off 'resize.preview', @setPreviewHeight
 
     showPreview: (oldView) ->
