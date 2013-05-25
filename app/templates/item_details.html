@@ -32,8 +32,9 @@
 
 <% if (typeof summary !== "undefined" && summary !== null && summary) { %>
 <section class='summary'>
-  <h2>Summary</h2>
-
+  <% _.forEach(confirmed_certifications, function(certification) { %>  
+    <h3><%- certification['display_text'] %></h3>
+  <% }); %>
   <article>
     <%= summary %>
   </article>
