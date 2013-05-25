@@ -7,7 +7,7 @@ Clone the repo and then install Yeoman and dependencies
 
 Install application dependencies
 
-    npm install && bower install
+    npm install bower && bower install
 
 Use Grunt for building, testing and serving
 
