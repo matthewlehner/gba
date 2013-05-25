@@ -24,6 +24,11 @@ function(app, Router, FastClick, domReady) {
   });
 
   function startWhenReady() {
+    $(document).on('click', 'a', function(event) {
+      event.preventDefault();
+      window.open(event.currentTarget.href, '_blank', 'location=yes');
+    });
+
     app.router.index();
   };
 });
