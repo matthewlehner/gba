@@ -102,7 +102,7 @@ define [
       , 1
 
     toggleItemView: (event) =>
-      if openView?
+      if @openView?
         @closeItem(event)
       else
         @openItem(event)
