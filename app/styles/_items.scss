@@ -108,7 +108,7 @@
 .item-details {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 12px;
+  padding: 12px; //updating this requires that the padding be changed in views/items#setHeight as well.
   color: #666;
   text-shadow: 0 0 1px rgba(255,255,255,1);
 
@@ -142,6 +142,11 @@
 
   article {
     font-size: em(16);
+
+    span {
+      font-size: 14px!important;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif!important;
+    }
 
     h1 {
       font-size: 1.4em;

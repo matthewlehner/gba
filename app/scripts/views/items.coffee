@@ -124,7 +124,7 @@ define [
 
     setHeight: =>
       @openView.$el.height(
-        $('#main').height() - @$el.find('header').innerHeight() - 10 # for pad
+        $('#main').height() - @$el.find('header').innerHeight() - 24 # for pad
       )
 
     closeItem: (event) =>
@@ -162,7 +162,7 @@ define [
 
     initImageBrowser: (e) ->
       if @model.get('pictures')?
-        @gallery = new PhotoGallery(@$el.find('.pictures a'))
+        @gallery = new PhotoGallery(@$el.find('.pictures span'))
 
     serialize: ->
       @model.toJSON()

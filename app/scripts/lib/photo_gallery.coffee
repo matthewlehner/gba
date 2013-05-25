@@ -58,7 +58,7 @@ define [
       if (index < 0 || index >= @items.length)
         return false;
       
-      src = @items.eq(index).attr('href')
+      src = @items.eq(index).attr('data-src')
 
       # Call the load function with the href attribute of the item
       @loadImage index, src
