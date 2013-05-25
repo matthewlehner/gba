@@ -83,8 +83,7 @@ define [
     template: 'item'
 
     events:
-      'click header': 'openItem'
-      'click .open-toggle': 'closeItem'
+      'click header': 'toggleItemView'
 
     initialize: ->
       @listenTo @model,
@@ -101,6 +100,12 @@ define [
       setTimeout =>
         @$el.trigger 'scroll'
       , 1
+
+    toggleItemView: (event) =>
+      if openView?
+        @closeItem(event)
+      else
+        @openItem(event)
 
     openItem: (event) =>
       return if @openView?
