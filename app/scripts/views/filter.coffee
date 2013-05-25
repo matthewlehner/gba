@@ -28,11 +28,13 @@ define [
       , 1
 
     createTemplate: ->
-      @$content = $("<form class='filter-form'>")
+      @$content = $("<ul class='filter-form'>")
 
       for type, shown of @collection.filterTypes()
-        checked = if shown then 'checked' else ''
-        @$content.append "<label for='#{type}'>#{type}<input type='checkbox' id='#{type}' name='#{type}' #{checked}/><div class='checkbox-indicator'></div></label>"
+        @$content.append @templateEl(type, shown)
+
+    templateEl: (type, selected) ->
+      "<li class='filter-type' data-type='#{type}' data-selected='#{selected}'>#{type}</label>"
 
     dismiss: ->
       @$el.one "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", =>
