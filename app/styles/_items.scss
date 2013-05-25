@@ -108,7 +108,7 @@
 .item-details {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 12px;
+  padding: 12px; //updating this requires that the padding be changed in views/items#setHeight as well.
   color: #666;
   text-shadow: 0 0 1px rgba(255,255,255,1);
 

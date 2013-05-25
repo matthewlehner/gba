@@ -124,7 +124,7 @@ define [
 
     setHeight: =>
       @openView.$el.height(
-        $('#main').height() - @$el.find('header').innerHeight() - 10 # for pad
+        $('#main').height() - @$el.find('header').innerHeight() - 24 # for pad
       )
 
     closeItem: (event) =>
