@@ -14,7 +14,7 @@ define [
       @listenTo @collection,
         'refilter'     : @resetMarkers
         'reset'        : @resetMarkers
-        'add'          : @addMarker
+        'add'          : @addSingleMarker
         'selectResult' : @focusMarker
         'remove'       : @removeMarker
 
@@ -28,26 +28,36 @@ define [
 
     addMarkers: ->
       @collection.filteredModels().each (item) =>
-        @addMarker(item)
+        @createMarker(item)
 
-      @collection.trigger 'markersAdded'
-
+      @addMarkersToMap()
       return this
 
-    addMarker: (item) ->
-      return unless _.contains @collection.filteredModels().value(), item
+    createMarker: (item) ->
+      attrs = new MarkerAttrs(item)
 
-      lat = item.get 'lat'
-      lng = item.get 'lng'
-
-      if lat? and lng?
-        marker = @mapControl.addMarker(lat, lng, item.mapMarkerClass()).on 'click', (e) =>
+      marker = @mapControl.createMarker(attrs)
+      if marker?
+        marker.on 'click', (e) =>
           @clickMarker(e, item)
 
         # let the model know that it has a marker.
         item.trigger 'addMarker', marker
 
       return this
+
+    addMarkersToMap: ->
+      @mapControl.renderMarkers()
+      @collection.trigger 'markersAdded'
+
+    addSingleMarker: ->
+      return if @waiting?
+      @waiting = true
+      window.setTimeout =>
+        @waiting = null
+        @collection.trigger 'refilter'
+        @resetMarkers()
+      , 500
 
     clickMarker: (e, item) =>
       item.trigger('mapSelect', item)
@@ -57,5 +67,11 @@ define [
 
     removeMarker: (item) =>
       @mapControl.items.removeLayer(item.marker)
+
+  class MarkerAttrs
+    constructor: (item) ->
+      @lat = item.get 'lat'
+      @lng = item.get 'lng'
+      @className = item.mapMarkerClass()
 
   return MapTiles
