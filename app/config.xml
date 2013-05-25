@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-<widget id="com.greenbuildingapp.gba" version="0.9.0">
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.greenbuildingapp.gba"
+        version   = "0.9.0">
 
   <name>Green Bldg</name>
   <description>
@@ -14,12 +17,19 @@
   </author> 
 
   <!--
+    Enable individual API permissions by defining each here.
+    The 'device' permission is required for the 'deviceready' event.
+  -->
+  <feature name="http://api.phonegap.com/1.0/device" />
+
+  <!--
     If you do not want any permissions to be added to your app, add the
     following tag to your config.xml; you will still have the INTERNET
     permission on your app, which PhoneGap requires.
   -->
   <preference name="permissions"                value="none"/>
-  
+
+  <!-- Customize your app and platform with the preference element. -->
   <preference name="phonegap-version"           value="all" />          <!-- all: current version of PhoneGap -->
   <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
   <preference name="target-device"              value="handset" />      <!-- all: possible values handset, tablet, or universal -->
