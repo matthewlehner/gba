@@ -2,4 +2,9 @@ node_modules
 public
 .tmp
 .sass-cache
+app/gba
 app/components
+app/npm-debug.log
+app/styles/_leaflet.scss
+app/styles/_markercluster.default.scss
+app/styles/_markercluster.scss
