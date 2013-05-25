@@ -116,11 +116,11 @@
       height: 30px;
       border-left: 1px solid #d7d7d7;
     }
+  }
 
-    .map {
-      path {
-        fill: rgba(0,0,0,0);
-      }
+  .map {
+    path, polygon {
+      fill: rgba(0,0,0,0);
     }
   }
 
@@ -183,7 +183,7 @@
 
 .list .view-toggle {
   .map {
-    path {
+    path, polygon {
       fill: #808080;
     }
   }
