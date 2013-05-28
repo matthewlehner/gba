@@ -311,6 +311,17 @@ module.exports = function (grunt) {
             '*.png'
           ]
         }]
+      },
+      phonegapAssets: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'config.xml',
+            'res/{,*/}*.png'
+          ]
+        }]
       }
     },
     concurrent: {
@@ -361,6 +372,14 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.dist %>/',
         src: ['scripts/*', 'styles/*'],
         dest: '<%= yeoman.dist %>/'
+      },
+      phonegap: {
+        options: {
+          archive: 'phonegap.zip'
+        },
+        files: [{
+          src: ['<%= yeoman.dist %>/**']
+        }]
       }
     },
   });
@@ -415,5 +434,23 @@ module.exports = function (grunt) {
     'jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('phonegap', [
+    'clean:dist',
+    'useminPrepare',
+    'concurrent:dist',
+    'copy:js',
+    'symlink',
+    'jst',
+    'requirejs',
+    'cssmin',
+    'concat',
+    'uglify',
+    'copy:dist',
+    'usemin',
+
+    'copy:phonegapAssets',
+    'compress:phonegap'
   ]);
 };
