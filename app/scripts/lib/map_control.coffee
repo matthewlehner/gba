@@ -143,7 +143,7 @@ define [
       @centerpoint.setLatLng @latlng
 
   class LatLngString
-    constructor: (latlng, precision=4) ->
+    constructor: (latlng, precision=1) ->
       lat = L.Util.formatNum(latlng.lat, precision)
       lng = L.Util.formatNum(latlng.lng, precision)
       @string = "#{lat},#{lng}"
