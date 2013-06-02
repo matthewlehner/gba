@@ -47,22 +47,27 @@ define [
     getDistance: (latlng) ->
       @currentLocation.distanceTo(latlng)
 
+    fitBounds: =>
+      @map.fitBounds @markerClusterer.getBounds()
+
     setupBoundsListeners: =>
       @map.on 'zoomend moveend', @shouldFetch
       @map.off 'locationfound', @setupBoundsListeners
 
+    removeBoundsListeners: =>
+      @map.off 'zoomend moveend', @shouldFetch
+
     shouldFetch: =>
-      willFetch = false
-      return if app.searchMode is true
+      if @willFetch() and !app.searchMode
+        app.trigger 'map:fetchItems', @map.getBounds().pad(0.1)
 
+    willFetch: ->
       try
-        willFetch = !@markerClusterer.getBounds().contains @map.getBounds()
+        !@markerClusterer.getBounds().contains @map.getBounds()
+      catch error
+        console.log error
+        false
 
-      if willFetch
-        app.trigger 'map:fetchItems', @map.getBounds().pad(10)
-
-    fitBounds: =>
-      @map.fitBounds @markerClusterer.getBounds()
 
   class MapFactory
     constructor: (@el) ->
