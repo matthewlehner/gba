@@ -46,11 +46,11 @@ define [
       $('#q').val('')
 
       @showOrHideClearControl()
-      @collection.fetch
-        data:
-          latlng: app.mapControl.currentLatLng
 
       app.searchMode = false
+      app.mapControl.setupBoundsListeners()
+      app.mapControl.triggerFetch()
+
       if $('#main').hasClass('list')
         @viewToggle()
 
