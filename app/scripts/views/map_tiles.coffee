@@ -57,7 +57,7 @@ define [
         @waiting = null
         @collection.trigger 'refilter'
         @resetMarkers()
-      , 500
+      , 200
 
     clickMarker: (e, item) =>
       item.trigger('mapSelect', item)
