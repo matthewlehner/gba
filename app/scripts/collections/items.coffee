@@ -14,6 +14,14 @@ define [
       @on 'refilter', =>
         @cachedModels = null
 
+    fetchWithDefaults: (params) ->
+      params ?= {}
+      _.defaults params,
+        data:
+          latlng: app.mapControl.currentLatLng
+
+      @fetch params
+
     search: (params) ->
       @fetch
         data: params

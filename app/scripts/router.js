@@ -23,19 +23,18 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
       items.currentlyFetching = false;
 
       items.listenToOnce(app, 'locationfound', function() {
-        items.fetch({
-          data: {latlng: app.mapControl.currentLatLng},
+        items.fetchWithDefaults({
           reset: true
         });
       });
 
-      items.listenTo(app, 'map:fetchItems', function(bounds) {
+      items.listenTo(app, 'map:fetchItems', function(boundsString) {
         if (items.currentlyFetching === false) {
           items.currentlyFetching = true;
           items.fetch({
             remove: false,
             data: {
-              bounds: bounds.toBBoxString()
+              bounds: boundsString
             },
             success: function (collection, response) {
               items.currentlyFetching = false;

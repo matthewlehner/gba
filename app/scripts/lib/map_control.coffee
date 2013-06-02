@@ -54,20 +54,40 @@ define [
       @map.on 'zoomend moveend', @shouldFetch
       @map.off 'locationfound', @setupBoundsListeners
 
-    removeBoundsListeners: =>
+    removeBoundsListeners: ->
       @map.off 'zoomend moveend', @shouldFetch
 
     shouldFetch: =>
       if @willFetch() and !app.searchMode
-        app.trigger 'map:fetchItems', @map.getBounds().pad(0.1)
+        @triggerFetch()
 
     willFetch: ->
       try
         !@markerClusterer.getBounds().contains @map.getBounds()
       catch error
-        console.log error
         false
 
+    triggerFetch: (bounds) ->
+      if @shouldFetchWorld()
+        @fetchWorld()
+      else
+        @fetchWithinBounds()
+
+    shouldFetchWorld: ->
+      bounds = @map.getBounds()
+      bigLat = ((bounds.getNorth() + 90) - (bounds.getSouth() + 90)) > 10
+      bigLng = ((bounds.getEast() + 180) - (bounds.getWest() + 180)) > 15
+      return bigLat or bigLng
+
+    fetchWorld: ->
+      app.trigger 'map:fetchItems', "-90,-180,90,180"
+      @removeBoundsListeners()
+
+    fetchWithinBounds: ->
+      bounds = @map.getBounds().pad(1)
+      southWest = new LatLngString(bounds.getSouthWest()).string
+      northEast = new LatLngString(bounds.getNorthEast()).string
+      app.trigger 'map:fetchItems', "#{southWest},#{northEast}"
 
   class MapFactory
     constructor: (@el) ->
