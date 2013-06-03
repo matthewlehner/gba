@@ -6,7 +6,7 @@ require.config({
 
   paths: {
     jquery                   : '../components/jquery/jquery',
-    leaflet                  : '../components/leaflet/dist/leaflet-src',
+    leaflet                  : 'leaflet-src',
     'leaflet.markercluster'  : '../components/leaflet.markerclusterer/dist/leaflet.markercluster',
     backbone                 : '../components/backbone/backbone',
     lodash                   : '../components/lodash/dist/lodash.underscore',
