@@ -5,6 +5,7 @@ define [
 
   class ItemCollection extends Backbone.Collection
     model: ItemModel
+    url: 'http://greenbuildingbrain.org/api/v2/items'
 
     initialize: ->
       @on 'reset', =>
@@ -33,8 +34,6 @@ define [
             app.trigger 'viewToggle'
 
       @trigger 'searching'
-
-    url: 'http://greenbuildingbrain.org/api/v1/items'
 
     comparator: (item) ->
       item.get 'distance'
