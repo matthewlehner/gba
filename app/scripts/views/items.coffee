@@ -1,7 +1,8 @@
 define [
   'app'
   'lib/photo_gallery'
-], (app, PhotoGallery) ->
+  'lib/media_player'
+], (app, PhotoGallery, MediaPlayer) ->
 
   class ItemsPanel extends Backbone.Layout
     initialize: ->
@@ -150,6 +151,9 @@ define [
     className: 'item-details'
     template: 'item_details'
 
+    events:
+      'click .play-button': 'audioButtonHandler'
+
     initialize: ->
       @listenTo @model, 'change', @render
       @on 'afterRender', @initImageBrowser
@@ -164,6 +168,12 @@ define [
     initImageBrowser: (e) ->
       if @model.get('pictures')?
         @gallery = new PhotoGallery(@$el.find('.pictures span'))
+
+      if @model.get('audio_files')?
+        @mediaPlayer = new MediaPlayer(@model.get('audio_files'))
+
+    audioButtonHandler: (e) =>
+      @mediaPlayer.clicked $(e.currentTarget)
 
     serialize: ->
       @model.toJSON()
