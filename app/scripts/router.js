@@ -33,9 +33,6 @@ function(app, ItemCollection, MapTiles, ControlsView, ItemsPanel, ResultsPanel) 
           items.currentlyFetching = true;
           items.fetch({
             remove: false,
-            data: {
-              bounds: boundsString
-            },
             success: function (collection, response) {
               items.currentlyFetching = false;
             },
