@@ -27,12 +27,12 @@ define [
     search: (e) =>
       e.preventDefault()
       e.stopImmediatePropagation()
+      $target = $(e.target)
+      $input = $target.find('input[name=q]')
+      return if _.isEmpty $input.val()
       app.searchMode = true
-      params = $(e.target)
-        .find('input[name=q]')
-          .blur()
-        .end()
-        .serialize()
+      $input.blur()
+      params = $(e.target).serialize()
 
       @collection.search(params)
 
@@ -49,7 +49,7 @@ define [
 
       app.searchMode = false
       app.mapControl.setupBoundsListeners()
-      app.mapControl.triggerFetch()
+      app.mapControl.fetchWorld()
 
       if $('#main').hasClass('list')
         @viewToggle()
