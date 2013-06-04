@@ -84,11 +84,17 @@
   }
 
   .search-clear {
+    box-sizing: border-box;
     position: absolute;
-    top: 12px;
-    right: 52px;
-    width:  16px;
-    height: 16px;
+    top: 0px;
+    right: 40px;
+    height: 40px;
+    padding: 12px;
+
+    svg {
+      width:  16px;
+      height: 16px;
+    }
   }
 
   .view-toggle {
