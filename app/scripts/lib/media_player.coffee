@@ -14,23 +14,40 @@ define [
         @media[file['id']] = new Media(file['url'])
 
     clicked: ($el) ->
-      if @$elementPlaying
-        @pauseOrSwitch($el)
+      media = @media[$el.data('audio-id')]
+      if @mediaPlaying
+        @pauseOrSwitch($el, media)
       else
-        @play($el)
+        @play($el, media)
 
-    play: ($el) ->
-      @media[$el.data('audio-id')].play()
+    play: ($el, media) ->
       $el.addClass 'playing'
-      @$elementPlaying = $el
+      @mediaPlaying = media
+      setTimeout ->
+        media.play
+          playAudioWhenScreenIsLocked: true
+      , 50
 
-    pauseOrSwitch: ($el) ->
-      if @$elementPlaying is $el
-        @media[$el.data('audio-id')].pause()
-        $el.removeClass('playing')
+    pauseOrSwitch: ($el, media) ->
+      if media is @mediaPlaying
+        if $el.hasClass('playing')
+          @pause()
+          $el.removeClass('playing')
+        else
+          @play($el, media)
+
       else
-        @media[@$elementPlaying.data('audio-id')].stop()
-        @$elementPlaying.removeClass('playing')
-        @play($el)
+        @mediaPlaying.stop()
+        $el.siblings().removeClass('playing')
+        @play($el, media)
+
+    pause: =>
+      @mediaPlaying.pause?()
+
+    remove: =>
+      for id, media in @media
+        media.stop()
+        media.release()
+
 
   return MediaPlayer
