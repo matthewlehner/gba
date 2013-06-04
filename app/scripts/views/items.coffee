@@ -156,6 +156,7 @@ define [
 
     initialize: ->
       @listenTo @model, 'change', @render
+      @listenTo @model, 'close', @pauseMedia
       @on 'afterRender', @initImageBrowser
       @on 'afterRender', @spin
 
@@ -175,10 +176,14 @@ define [
     audioButtonHandler: (e) =>
       @mediaPlayer.clicked $(e.currentTarget)
 
+    pauseMedia: ->
+      @mediaPlayer.pause()
+
     serialize: ->
       @model.toJSON()
 
     cleanup: ->
       @gallery?.remove()
+      @mediaPlayer?.remove()
 
   return ItemsPanel
