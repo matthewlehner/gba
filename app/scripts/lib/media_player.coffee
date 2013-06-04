@@ -11,10 +11,7 @@ define [
       @media ?= {}
 
       for file in @audioFiles
-        k = file['id']
-        v = new Media(file['url'])
-        o = {k: v}
-        _.extend @media, o
+        @media[file['id']] = new Media(file['url'])
 
     clicked: ($el) ->
       if @$elementPlaying
