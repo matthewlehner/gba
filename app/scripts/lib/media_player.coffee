@@ -5,7 +5,7 @@ define [
   class MediaPlayer
     constructor:(@audioFiles) ->
       @createMediaObjects()
-      @$elementPlaying = false
+      @mediaPlaying = false
 
     createMediaObjects: ->
       @media ?= {}
@@ -42,7 +42,7 @@ define [
         @play($el, media)
 
     pause: =>
-      @mediaPlaying.pause?()
+      @mediaPlaying?.pause?()
 
     remove: =>
       for id, media in @media
