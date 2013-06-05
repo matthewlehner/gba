@@ -177,7 +177,7 @@ define [
       @mediaPlayer.clicked $(e.currentTarget)
 
     pauseMedia: ->
-      @mediaPlayer.pause()
+      @mediaPlayer.pause?()
 
     serialize: ->
       @model.toJSON()
